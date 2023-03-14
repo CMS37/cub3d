@@ -28,10 +28,22 @@ static int	checkType(char *str)
 	return (0);
 }
 
-void	parsing(int ac, char **av)
+static void	parse_av(int argc, char **argv)
 {
-	if (ac != 2)
+	if (argc != 2)
 		printErr("Check argument");
-	if (checkType(av[1]))
+	if (checkType(argv[1]))
 		printErr("Check File type");
+}
+
+static void parse_info(t_info *info)
+{
+
+}
+
+void	parsing(int argc, char **argv, t_info *info)
+{
+	parse_av(argc, argv);
+	getInfo(info, argv); //gnl + init info (before parse?)
+	parse_info(info); //parse map > xpmfile
 }

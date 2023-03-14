@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/14 01:06:31 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/14 02:09:25 by min-cho          ###   ########seoul.kr  */
+/*   Created: 2023/03/14 18:50:34 by marvin            #+#    #+#             */
+/*   Updated: 2023/03/14 18:50:34 by marvin           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-void	free_info(t_info *info)
+void	getInfo(t_info *info, char **argv)
 {
-	if (info->map)
-		free(map);
-}
-int main(int argc, char **argv)
-{
-	t_info	info;
+	int		fd;
+	char	*line;
 
-	parsing(argc, argv, &info);
-	//startGame(&info);
-	//free_info(&info);
-	return (0);
+	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+		printErr("Fail open file");
+	while(1)
+	{
+		line = get_next_line(fd);
+		if(!line)
+		{
+			break;
+		}
+	}
+	free(line);
+
+	close(fd);
 }

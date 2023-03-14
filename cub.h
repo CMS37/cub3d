@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #ifndef CUB_H
 # define CUB_H
 
@@ -44,7 +43,13 @@ typedef struct s_info
 } t_info;
 
 
-
+//error.c
 void	printErr(char *s1);
+
+//parsing.c
+void	parsing(int argc, char **argv, t_info *info);
+
+//get.c
+void	getInfo(t_info *info, char **argv);
 
 #endif
