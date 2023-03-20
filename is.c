@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get.c                                              :+:      :+:    :+:   */
+/*   is.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/14 18:50:34 by marvin            #+#    #+#             */
-/*   Updated: 2023/03/14 18:50:34 by marvin           ###   ########seoul.kr  */
+/*   Created: 2023/03/20 19:13:04 by marvin            #+#    #+#             */
+/*   Updated: 2023/03/20 19:13:04 by marvin           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-void	getInfo(t_info *info, char **argv)
+void	is_op(char *line, t_info *info)
 {
-	int		i;
-	int		fd;
+	static int i = 0;
+	int		len;
 	char	*tmp;
 	char	*tmp2;
-	char	**line;
 
-	fd = open(argv[1], O_RDONLY);
-	if (fd < 0)
-		printErr("Fail open file");
-	tmp = NULL;
-	while(1)
-	{
-		tmp2 = get_next_line(fd);
-		if(!tmp)
-			break;
-		ft_strcat(tmp, tmp2); //libft폴더 넣기
-	}
-	line = ft_split(tmp, '\n');
-	free(tmp2);
-	close(fd);
+	if (i > 3)
+		return ;
+	len = ft_strlen(str);
+	tmp = ft_substr(str, 0, 2);
+	tmp2 = ft_substr(str, 4, len);
+	if (ft_strcmp(tmp, "NO"))
+		info->img.no = tmp2;
+	else if(ft_strcmp(tmp,"SO"))
+		info->img.so = tmp2;
+	else if(ft_strcmp(tmp,"EA"))
+		info->img.ea = tmp2;
+	else if(ft_strcmp(tmp,"WE"))
+		info->img.we = tmp2;
+	free(tmp);
+	i++;
 }

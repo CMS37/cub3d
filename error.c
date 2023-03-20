@@ -15,5 +15,6 @@
 void	printErr(char *s1)
 {
 	printf("Error! %s\n", s1);
+	
 	exit (1);
 }
