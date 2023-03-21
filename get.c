@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 18:50:34 by marvin            #+#    #+#             */
-/*   Updated: 2023/03/14 18:50:34 by marvin           ###   ########seoul.kr  */
+/*   Updated: 2023/03/21 22:37:53 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,29 @@
 
 void	getInfo(t_info *info, char **argv)
 {
-	int		i;
 	int		fd;
+	int		i;
 	char	*tmp;
 	char	*tmp2;
-	char	**line;
+	char	*line;
 
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 		printErr("Fail open file");
-	tmp = NULL;
+	i = 0;
+	line = ft_strdup("");
 	while(1)
 	{
-		tmp2 = get_next_line(fd);
+		tmp = get_next_line(fd);
 		if(!tmp)
 			break;
-		ft_strcat(tmp, tmp2); //libft폴더 넣기
+		tmp2 = ft_strdup(line);
+		free(line);
+		line = ft_strjoin(tmp2, tmp);
+		free(tmp2);		
+		i++;
 	}
-	line = ft_split(tmp, '\n');
-	free(tmp2);
+	info->size = i - 2;
+	info->map = ft_split(line, '\n');
 	close(fd);
 }

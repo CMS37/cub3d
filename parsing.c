@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 01:09:04 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/14 01:59:00 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/21 22:37:21 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,18 @@ static void	parse_av(int argc, char **argv)
 
 static void parse_info(t_info *info)
 {
+	int i;
 
+	i = 0;
+	printf("%d\n", info->size);
+	while(i < info->size)
+	{
+		if(!is_xpm(info->map[i],info))
+		{
+			printf("%d : %s\n", i,info->map[i]);
+		}
+		i++;
+	}
 }
 
 void	parsing(int argc, char **argv, t_info *info)

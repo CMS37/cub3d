@@ -6,44 +6,56 @@
 #    By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/11 18:53:50 by min-cho           #+#    #+#              #
-#    Updated: 2023/03/14 00:53:39 by min-cho          ###   ########seoul.kr   #
+#    Updated: 2023/03/21 18:52:46 by min-cho          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub
-GNL = gnl
 CUB = cub
 MLX = mlx
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 LIB = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
-CUB_SRC =	gnl/ft_split.c \
-			gnl/get_next_line_utils.c \
-			gnl/get_next_line.c\
-			main.c
+OBJS_DIR	= ./objs
+
+SRCS =	gnl/ft_split.c \
+		gnl/get_next_line_utils.c \
+		gnl/get_next_line.c\
+		ft_strcmp.c \
+		ft_strlcat.c \
+		main.c \
+		is.c \
+		info.c \
+		get.c \
+		error.c \
+		parsing.c
 
 
-CUB_OBJS = ${CUB_SRC:.c=.o}
+OBJS := ${SRCS:%.c=${OBJS_DIR}/%.o}
 
 all: $(MLX) $(NAME)
 
-$(NAME): $(CUB_OBJS)
-	@ $(CC) $(CFLAGS) $(CUB_OBJS) -o $@ $(LIB)
+${OBJS_DIR}:
+	@mkdir ${OBJS_DIR}
+	@mkdir ${OBJS_DIR}/gnl
 
 $(MLX):
 	@ make -C mlx
+
+$(NAME): $(OBJS)
+	@ $(CC) $(LIB) -o $(NAME) $(OBJS)
+	
+${OBJS_DIR}/%.o: %.c | ${OBJS_DIR}
+	@${CC} ${CFLAGS} -g -c $< -o $@
 	
 clean:
 	@ make clean -C mlx
-	@ rm -rf $(CUB_OBJS)
+	@ rm -rf $(OBJS_DIR)
 
 fclean: clean
 	@ rm -rf $(NAME)
 
 re: fclean all
-
-g :
-	gcc -g -Lmlx -lmlx -framework OpenGL -framework AppKit *.c gnl/*.c
 
 .PHONY: all clean fclean re
