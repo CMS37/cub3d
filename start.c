@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 02:13:36 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/22 02:33:38 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/22 02:52:59 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int	end_game(t_game *g)
 {
+	//free(g) < make
 	mlx_destroy_window(g->mlx, g->win);
 	exit(0);
 	return (0);
