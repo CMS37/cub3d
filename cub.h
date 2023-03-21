@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 00:52:17 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/21 22:36:39 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/22 01:31:52 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 # define CUB_H
 
 # include "mlx/mlx.h"
-# include "gnl/get_next_line.h"
+# include "gnl/get_next_line.h" //unistd, stdlib
 # include <fcntl.h>
-# include <unistd.h>
 # include <stdio.h>
+
 
 # define SIZE	64
 
@@ -27,19 +27,15 @@
 # define KEY_D		2
 # define KEY_ESC	53
 
-# define FALSE 1
-# define TRUE 0
-
 typedef struct s_img
 {
 	char	*no;
 	char	*so;
 	char	*we;
 	char	*ea;
-	char	*floor;
-	char	*ceiling;
+	char	**floor;
+	char	**ceiling;
 } t_img;
-
 
 typedef struct s_info
 {
@@ -59,7 +55,7 @@ void	printErr(char *s1);
 void	parsing(int argc, char **argv, t_info *info);
 
 //get.c
-void	getInfo(t_info *info, char **argv);
+void	get_info(t_info *info, char **argv);
 
 //info.c
 int	is_xpm(char *tmp, t_info *info);

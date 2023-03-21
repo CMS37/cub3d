@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 01:09:04 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/21 22:37:21 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/22 02:05:32 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,14 @@ static void	parse_av(int argc, char **argv)
 		printErr("Check File type");
 }
 
-static void parse_info(t_info *info)
+static void	parse_info(t_info *info)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	printf("%d\n", info->size);
-	while(i < info->size)
+	while (i < info->size)
 	{
-		if(!is_xpm(info->map[i],info))
-		{
-			printf("%d : %s\n", i,info->map[i]);
-		}
+		is_xpm(info->map[i], info); //여까진 맵옵션들 info에 입력완료
 		i++;
 	}
 }
@@ -55,6 +51,6 @@ static void parse_info(t_info *info)
 void	parsing(int argc, char **argv, t_info *info)
 {
 	parse_av(argc, argv);
-	getInfo(info, argv); //gnl + init info (before parse?)
+	get_info(info, argv); //gnl + init info (before parse?)
 	parse_info(info); //parse map > xpmfile
 }

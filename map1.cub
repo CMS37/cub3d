@@ -1,7 +1,7 @@
-NO ./texture/brick.xpm
-SO ./texture/blue.xpm
-EA ./texture/grey.xpm
-WE ./texture/wood.xpm
+NO ./texture/no.xpm
+SO ./texture/so.xpm
+EA ./texture/ea.xpm
+WE ./texture/we.xpm
 
 F 220,100,0
 C 225,30,0
