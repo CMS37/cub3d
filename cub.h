@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 00:52:17 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/22 01:31:52 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/22 02:19:53 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,14 @@ typedef struct s_info
 	char	**map;
 	t_img	img;
 } t_info;
+
+typedef struct s_game
+{
+	void	*mlx;	
+	void	*win;
+	int		x;
+	int		y;
+}	t_game;
 
 //use libft
 int		ft_strcmp(const char *str1, const char *str2);
