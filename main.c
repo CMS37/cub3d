@@ -6,11 +6,24 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 01:06:31 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/22 02:02:06 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/22 11:20:25 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+void	free_map(char **map)
+{
+	int	i;
+
+	i = 0;
+	if (map)
+	{
+		while (map[++i])
+			free(map[i]);
+		free(map);
+	}
+}
 
 static void	free_img(t_img *img)
 {
@@ -34,11 +47,7 @@ static void	free_img(t_img *img)
 
 static void	free_info(t_info *info)
 {
-	int	i;
-
-	i = info->size;
-	while (i--)
-		free(info->map[i]);
+	free_map(info->map);
 	free_img(&info->img);
 }
 
@@ -60,7 +69,7 @@ int	main(int argc, char **argv)
 
 	clear_info(&info);
 	parsing(argc, argv, &info);
-	//startGame(&info);
+	start_game(&info);
 	free_info(&info);
 	return (0);
 }

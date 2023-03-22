@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 00:52:17 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/22 02:19:53 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/22 12:27:44 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "gnl/get_next_line.h" //unistd, stdlib
 # include <fcntl.h>
 # include <stdio.h>
-
+# include <math.h>
 
 # define SIZE	64
 
@@ -26,6 +26,9 @@
 # define KEY_A		0
 # define KEY_D		2
 # define KEY_ESC	53
+
+# define WIDTH 1280
+# define HEIGHT 720
 
 typedef struct s_img
 {
@@ -44,12 +47,21 @@ typedef struct s_info
 	t_img	img;
 } t_info;
 
+typedef struct s_xpm
+{
+	void	*no;
+	void	*so;
+	void	*we;
+	void	*ea;
+} t_xpm;
+
+
 typedef struct s_game
 {
 	void	*mlx;	
 	void	*win;
-	int		x;
-	int		y;
+	char	**map;
+	t_xpm	xpm;
 }	t_game;
 
 //use libft
@@ -67,5 +79,11 @@ void	get_info(t_info *info, char **argv);
 
 //info.c
 int	is_xpm(char *tmp, t_info *info);
+
+//main.c
+void	free_map(char **map);
+
+//start.c
+void	start_game(t_info *info);
 
 #endif
