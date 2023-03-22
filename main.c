@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 01:06:31 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/22 16:13:12 by min-cho          ###   ########.fr       */
+/*   Updated: 2023/03/22 16:17:15 by min-cho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,3 @@ int	main(int argc, char **argv)
 	free_info(&info);
 	return (0);
 }
-
