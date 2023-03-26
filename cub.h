@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 00:52:17 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/22 12:27:44 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/26 18:31:27 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <math.h>
+# include <string.h>
 
 # define SIZE	64
 
@@ -27,8 +28,8 @@
 # define KEY_D		2
 # define KEY_ESC	53
 
-# define WIDTH 1280
-# define HEIGHT 720
+# define WIDTH 640
+# define HEIGHT 480
 
 typedef struct s_img
 {
@@ -55,13 +56,28 @@ typedef struct s_xpm
 	void	*ea;
 } t_xpm;
 
+typedef struct	s_vec
+{
+	double	x;
+	double	y;
+} t_vec;
+
+typedef struct s_player
+{
+	int	x;
+	int	y;
+} t_player;
 
 typedef struct s_game
 {
-	void	*mlx;	
-	void	*win;
-	char	**map;
-	t_xpm	xpm;
+	void		*mlx;	
+	void		*win;
+	char		**map;
+	t_vec		pos;//플레이어의 위치 좌표
+	t_vec		dir;  //백터 좌표
+	t_vec		plane;   //fov시야각 좌표
+	t_vec		ray; //광선 방향 벡터
+	t_xpm		xpm;
 }	t_game;
 
 //use libft
