@@ -204,3 +204,5 @@ void	start_game(t_info *info)
 	mlx_hook(g.win, 2, 0, key_event, &g);
 	mlx_loop(g.mlx);
 }
+
+232322
