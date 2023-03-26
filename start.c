@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 02:13:36 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/26 20:35:40 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/26 21:53:40 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,11 +161,9 @@ void	testloop(t_game *g)
 		//벽 칠하기
 		int color;
 		if (g->map[mapY][mapX] == '1')
-			color = 0xFF0000; //빨강
-		else if(g->map[mapY][mapX] == '2')
-			color = 0xFFFFFF; //하양
+			color = g->f_color;
 		else
-			color = 0xFFFF00; //노랑
+			color = g->c_color;
 		//사이드벽 색갈다르게
 		if (side == 1)
 			color = color / 2; 
@@ -211,7 +209,7 @@ void	start_game(t_info *info)
 	set_game(&g, info);
 
 	//testcode
-	// mlx_loop_hook(g.mlx, &test, &g);
+	mlx_loop_hook(g.mlx, &test, &g);
 
 	mlx_hook(g.win, 17, 0, end_game, &g);
 	mlx_hook(g.win, 2, 0, key_event, &g);
