@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 02:13:36 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/26 19:50:28 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/26 19:51:32 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,5 +204,3 @@ void	start_game(t_info *info)
 	mlx_hook(g.win, 2, 0, key_event, &g);
 	mlx_loop(g.mlx);
 }
-
-232322
