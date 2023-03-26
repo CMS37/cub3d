@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 02:13:36 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/26 19:51:32 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/26 20:35:40 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,20 @@ int	test(t_game *g)
 	return (0);
 }
 
+void	set_game(t_game *g, t_info *info)
+{
+	set_img(g, info);
+	g->map = copy_map(info->map, info->size);
+	g->f_color = info->f_color;
+	if (!g->f_color)
+		printErr("Floor RGB value ERR");
+	g->c_color = info->c_color;
+	if (!g->c_color)
+		printErr("Ceiling RGB value ERR");
+	
+}
+
+
 void	start_game(t_info *info)
 {
 	t_game g;
@@ -194,11 +208,10 @@ void	start_game(t_info *info)
 	g.plane.y = 0.66;
 	g.mlx = mlx_init();
 	g.win = mlx_new_window(g.mlx, WIDTH, HEIGHT, "Cub3D");
-	g.map = copy_map(info->map, info->size);
-	// set_img(&g, info);
+	set_game(&g, info);
 
 	//testcode
-	mlx_loop_hook(g.mlx, &test, &g);
+	// mlx_loop_hook(g.mlx, &test, &g);
 
 	mlx_hook(g.win, 17, 0, end_game, &g);
 	mlx_hook(g.win, 2, 0, key_event, &g);

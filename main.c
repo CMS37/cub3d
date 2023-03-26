@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 01:06:31 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/22 16:13:12 by min-cho          ###   ########.fr       */
+/*   Updated: 2023/03/26 20:27:38 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,23 +51,11 @@ static void	free_info(t_info *info)
 	free_img(&info->img);
 }
 
-static void	clear_info(t_info *info)
-{
-	info->size = 0;
-	info->map = NULL;
-	info->img.no = NULL;
-	info->img.so = NULL;
-	info->img.we = NULL;
-	info->img.ea = NULL;
-	info->img.floor = NULL;
-	info->img.ceiling = NULL;
-}
-
 int	main(int argc, char **argv)
 {
 	t_info	info;
 
-	clear_info(&info);
+	ft_bzero(&info, sizeof(t_info));
 	parsing(argc, argv, &info);
 	start_game(&info);
 	free_info(&info);

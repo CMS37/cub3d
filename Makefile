@@ -6,7 +6,7 @@
 #    By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/11 18:53:50 by min-cho           #+#    #+#              #
-#    Updated: 2023/03/26 17:52:05 by min-cho          ###   ########seoul.kr   #
+#    Updated: 2023/03/26 20:32:26 by min-cho          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS =	gnl/ft_split.c \
 		gnl/get_next_line.c\
 		ft_strcmp.c \
 		ft_strlcat.c \
+		ft_bzero.c \
 		main.c \
 		info.c \
 		get.c \

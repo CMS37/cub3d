@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 00:52:17 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/26 18:31:27 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/26 20:31:09 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ typedef struct s_info
 {
 	int		size;
 	char	**map;
+	int		f_color;
+	int		c_color;
 	t_img	img;
 } t_info;
 
@@ -73,6 +75,8 @@ typedef struct s_game
 	void		*mlx;	
 	void		*win;
 	char		**map;
+	int			f_color;
+	int			c_color;
 	t_vec		pos;//플레이어의 위치 좌표
 	t_vec		dir;  //백터 좌표
 	t_vec		plane;   //fov시야각 좌표
@@ -82,6 +86,7 @@ typedef struct s_game
 
 //use libft
 int		ft_strcmp(const char *str1, const char *str2);
+void	ft_bzero(void *s, size_t n);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
 
 //error.c
