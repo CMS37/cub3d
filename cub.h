@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 00:52:17 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/26 20:31:09 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/27 00:34:21 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,13 @@ typedef struct s_img
 	char	*so;
 	char	*we;
 	char	*ea;
-	char	**floor;
-	char	**ceiling;
 } t_img;
 
 typedef struct s_info
 {
-	int		size;
 	char	**map;
+	char	**rgb;
+	int		size;
 	int		f_color;
 	int		c_color;
 	t_img	img;
@@ -88,6 +87,8 @@ typedef struct s_game
 int		ft_strcmp(const char *str1, const char *str2);
 void	ft_bzero(void *s, size_t n);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
+int		white_space(char c);
+int		ft_atoi(const char *nptr);
 
 //error.c
 void	printErr(char *s1);
@@ -103,6 +104,7 @@ int	is_xpm(char *tmp, t_info *info);
 
 //main.c
 void	free_map(char **map);
+void	free_info(t_info *info);
 
 //start.c
 void	start_game(t_info *info);

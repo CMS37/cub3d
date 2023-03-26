@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 02:13:36 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/26 21:53:40 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/27 00:50:34 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int	end_game(t_game *g)
 {
-	//free(g) < make or just exit?
 	mlx_destroy_window(g->mlx, g->win);
 	exit(0);
 	return (0);
@@ -207,7 +206,7 @@ void	start_game(t_info *info)
 	g.mlx = mlx_init();
 	g.win = mlx_new_window(g.mlx, WIDTH, HEIGHT, "Cub3D");
 	set_game(&g, info);
-
+	free_info(info);
 	//testcode
 	mlx_loop_hook(g.mlx, &test, &g);
 

@@ -6,7 +6,7 @@
 #    By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/11 18:53:50 by min-cho           #+#    #+#              #
-#    Updated: 2023/03/26 20:32:26 by min-cho          ###   ########seoul.kr   #
+#    Updated: 2023/03/27 00:31:11 by min-cho          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,10 @@ OBJS_DIR	= ./objs
 SRCS =	gnl/ft_split.c \
 		gnl/get_next_line_utils.c \
 		gnl/get_next_line.c\
-		ft_strcmp.c \
-		ft_strlcat.c \
-		ft_bzero.c \
+		utils/ft_strcmp.c \
+		utils/ft_strlcat.c \
+		utils/ft_bzero.c \
+		utils/ft_atoi.c \
 		main.c \
 		info.c \
 		get.c \
@@ -40,6 +41,7 @@ all: $(MLX) $(NAME)
 ${OBJS_DIR}:
 	@mkdir ${OBJS_DIR}
 	@mkdir ${OBJS_DIR}/gnl
+	@mkdir ${OBJS_DIR}/utils
 
 $(MLX):
 	@ make -C mlx
