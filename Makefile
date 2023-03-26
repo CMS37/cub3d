@@ -6,7 +6,7 @@
 #    By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/11 18:53:50 by min-cho           #+#    #+#              #
-#    Updated: 2023/03/22 11:21:01 by min-cho          ###   ########seoul.kr   #
+#    Updated: 2023/03/26 17:52:05 by min-cho          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = cub
 CUB = cub
 MLX = mlx
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = 
 LIB = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 OBJS_DIR	= ./objs
