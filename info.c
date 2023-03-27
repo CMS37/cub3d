@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 01:19:16 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/27 14:24:06 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/27 16:36:44 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	str_isdigit(char *str)
 
 static int	split_len(char **str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])

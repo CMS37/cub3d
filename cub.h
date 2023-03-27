@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 00:52:17 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/27 11:30:50 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/27 16:39:12 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ typedef struct s_game
 	void		*mlx;	
 	void		*win;
 	char		**map;
+	int			MAX_Y;
 	int			f_color;
 	int			c_color;
 	int			angle;
@@ -128,5 +129,10 @@ char	**copy_map(char **map, int size);
 //set.c
 void	set_img(char **patch, char *tmp);
 void	set_game(t_game *g, t_info *info);
+
+//is.c
+int	is_player(char c);
+int	is_closed(t_game *g, int x, int y);
+int	map_identi(char c);
 
 #endif

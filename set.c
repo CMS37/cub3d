@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 09:01:07 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/27 14:51:33 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/27 17:01:11 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	set_img(char **patch, char *tmp)
 void	load_img(t_game *g, t_info *info)
 {
 	g->tex.no.img = mlx_xpm_file_to_image(g->mlx, info->img.no, \
-										&g->tex.no.width, &g->tex.no.height);\
+										&g->tex.no.width, &g->tex.no.height);
 	g->tex.so.img = mlx_xpm_file_to_image(g->mlx, info->img.so, \
 										&g->tex.so.width, &g->tex.so.height);
 	g->tex.we.img = mlx_xpm_file_to_image(g->mlx, info->img.we, \
@@ -41,36 +41,6 @@ void	load_img(t_game *g, t_info *info)
 										&g->tex.ea.len, &g->tex.ea.end);
 }
 
-static int	map_identi(char c)
-{
-	const char s[8] = "10NESW ";
-	int			i;
-
-	i = 0;
-	while(s[i])
-	{
-		if (c == s[i])
-			return(0);
-		i++;
-	}
-	return (1);
-}
-
-static int	is_player(char c)
-{
-	const char	s[5] = "NESW";
-	int			i;
-
-	i = 0;
-	while(s[i])
-	{
-		if(c == s[i])
-			return(1);
-		i++;
-	}
-	return (0);
-}
-
 static void	set_pos(t_game *g)
 {
 	int	x;
@@ -84,20 +54,19 @@ static void	set_pos(t_game *g)
 		{
 			if (map_identi(g->map[y][x]))
 				print_err("Map only use 10NESW");
+			if (is_closed(g, x, y))
+				print_err("Map is not closed");
 			if (is_player(g->map[y][x]))
 			{
-				if (g->pos.x != 0 &&g->pos.y != 0)
+				if (g->pos.x || g->pos.y)
 					print_err("So many NSEW");
-				g->pos.x = x;
-				g->pos.y = y;
-				// g->angle = 스폰방향에따라 바라보는방향 조정?
+				g->pos.x = x + 0.5;
+				g->pos.y = y + 0.5;
 			}
 			x++;
 		}
 		y++;
 	}
-	if (!g->pos.x || !g->pos.y)
-		print_err("Wrong Map");
 }
 
 void	set_game(t_game *g, t_info *info)
@@ -113,6 +82,8 @@ void	set_game(t_game *g, t_info *info)
 	if (!g->c_color)
 		print_err("Ceiling RGB value ERR");
 	set_pos(g);
+	if (g->pos.x == 0 || g->pos.y == 0)
+		print_err("Wrong MAP!");
 	g->dir.x = -1;
 	g->plane.x = 0;
 	g->plane.y = 0.66;
