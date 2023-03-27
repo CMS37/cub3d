@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 02:13:36 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/22 15:49:50 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/27 14:23:50 by min-cho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int	end_game(t_game *g)
 {
-	//free(g) < make or just exit?
 	mlx_destroy_window(g->mlx, g->win);
 	exit(0);
 	return (0);
@@ -42,9 +41,9 @@ char	**copy_map(char **map, int size)
 
 	tmp = (char **)malloc(sizeof(char *) * (size - 5));
 	if (!tmp)
-		return(NULL);
+		return (NULL);
 	i = 0;
-	while(map[i + 6])
+	while (map[i + 6])
 	{
 		tmp[i] = ft_strdup(map[i + 6]);
 		if (!tmp[i])
