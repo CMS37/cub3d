@@ -6,11 +6,11 @@
 #    By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/11 18:53:50 by min-cho           #+#    #+#              #
-#    Updated: 2023/03/27 09:06:03 by min-cho          ###   ########seoul.kr   #
+#    Updated: 2023/03/27 13:52:30 by min-cho          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub
+NAME = cub3D
 CUB = cub
 MLX = mlx
 CC = gcc

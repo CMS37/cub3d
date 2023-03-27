@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 01:19:16 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/27 09:07:00 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/27 14:24:06 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,16 @@ static int	str_isdigit(char *str)
 	return (0);
 }
 
+static int	split_len(char **str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
 static void	rgb_to_hex(int *hex, char **str)
 {
 	int		red;
@@ -54,7 +64,8 @@ static void	rgb_to_hex(int *hex, char **str)
 
 	if ((*hex))
 		print_err("Check Map identifier");
-	if (str_isdigit(str[0]) || str_isdigit(str[1]) || str_isdigit(str[2]))
+	if (split_len(str) != 3 || str_isdigit(str[0]) || str_isdigit(str[1]) || \
+		str_isdigit(str[2]))
 		print_err("Check RGB value");
 	red = ft_atoi(str[0]);
 	green = ft_atoi(str[1]);
@@ -77,9 +88,17 @@ int	is_xpm(char *tmp, t_info *info)
 	else if (tmp[0] == 'E' && tmp[1] == 'A')
 		set_img(&(info->img.ea), tmp + 3);
 	else if (tmp[0] == 'F')
+	{
+		if (tmp[1] != ' ')
+			print_err("Check Map identifier");
 		rgb_to_hex(&(info->f_color), ft_split(tmp + 2, ','));
+	}
 	else if (tmp[0] == 'C')
+	{
+		if (tmp[1] != ' ')
+			print_err("Check Map identifier");
 		rgb_to_hex(&(info->c_color), ft_split(tmp + 2, ','));
+	}
 	else
 		return (0);
 	return (1);

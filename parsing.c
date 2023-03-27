@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 01:09:04 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/27 08:29:41 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/27 14:07:21 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static int	check_type(char *str, char *type)
 
 	len = ft_strlen(str);
 	tmp = ft_substr(str, len - 4, len);
+	if (!str)
+		print_err("Check Map identifier");
 	if (ft_strcmp(tmp, type))
 	{
 		free(tmp);

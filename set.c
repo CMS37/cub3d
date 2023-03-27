@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 09:01:07 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/27 11:49:43 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/27 13:45:02 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	set_game(t_game *g, t_info *info)
 		print_err("Ceiling RGB value ERR");
 	set_pos(g);
 	g->dir.x = -1;
+	g->plane.x = 0;
 	g->plane.y = 0.66;
 	load_img(g, info);
 }
