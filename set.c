@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 09:01:07 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/27 13:45:02 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/27 14:51:33 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,36 @@ void	load_img(t_game *g, t_info *info)
 										&g->tex.ea.len, &g->tex.ea.end);
 }
 
+static int	map_identi(char c)
+{
+	const char s[8] = "10NESW ";
+	int			i;
+
+	i = 0;
+	while(s[i])
+	{
+		if (c == s[i])
+			return(0);
+		i++;
+	}
+	return (1);
+}
+
+static int	is_player(char c)
+{
+	const char	s[5] = "NESW";
+	int			i;
+
+	i = 0;
+	while(s[i])
+	{
+		if(c == s[i])
+			return(1);
+		i++;
+	}
+	return (0);
+}
+
 static void	set_pos(t_game *g)
 {
 	int	x;
@@ -52,9 +82,12 @@ static void	set_pos(t_game *g)
 		x = 0;
 		while (g->map[y][x])
 		{
-			if (g->map[y][x] == 'N' || g->map[y][x] == 'S' || \
-				g->map[y][x] == 'E' || g->map[y][x] == 'W')
+			if (map_identi(g->map[y][x]))
+				print_err("Map only use 10NESW");
+			if (is_player(g->map[y][x]))
 			{
+				if (g->pos.x != 0 &&g->pos.y != 0)
+					print_err("So many NSEW");
 				g->pos.x = x;
 				g->pos.y = y;
 				// g->angle = 스폰방향에따라 바라보는방향 조정?
