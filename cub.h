@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 00:52:17 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/27 11:30:50 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/27 18:39:52 by min-cho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # define KEY_A		0
 # define KEY_D		2
 # define KEY_ESC	53
+# define KEY_ARROW_LEFT 123
+# define KEY_ARROW_RIGHT 124
 
 # define WIDTH 640
 # define HEIGHT 480
@@ -76,6 +78,13 @@ typedef struct	s_vec
 	double	y;
 } t_vec;
 
+typedef struct s_vec_int
+{
+	int	x;
+	int	y;
+}	t_vec_int;
+
+
 typedef struct s_player
 {
 	int	x;
@@ -95,6 +104,8 @@ typedef struct s_game
 	t_vec		plane;	//fov시야각 좌표
 	t_vec		ray;	//광선 방향 벡터
 	t_tex		tex;
+	int			buf[HEIGHT][WIDTH];
+	t_imgptr	window_img;
 }	t_game;
 
 //use libft
@@ -128,5 +139,8 @@ char	**copy_map(char **map, int size);
 //set.c
 void	set_img(char **patch, char *tmp);
 void	set_game(t_game *g, t_info *info);
+
+//test.c
+int	test(t_game *g);
 
 #endif
