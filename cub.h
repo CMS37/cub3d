@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 00:52:17 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/27 00:34:21 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/27 09:07:09 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int		white_space(char c);
 int		ft_atoi(const char *nptr);
 
 //error.c
-void	printErr(char *s1);
+void	print_err(char *s1);
 
 //parsing.c
 void	parsing(int argc, char **argv, t_info *info);
@@ -100,7 +100,8 @@ void	parsing(int argc, char **argv, t_info *info);
 void	get_info(t_info *info, char **argv);
 
 //info.c
-int	is_xpm(char *tmp, t_info *info);
+int		is_xpm(char *tmp, t_info *info);
+char	*check_xpm_file(char *tmp);
 
 //main.c
 void	free_map(char **map);
@@ -108,5 +109,10 @@ void	free_info(t_info *info);
 
 //start.c
 void	start_game(t_info *info);
+char	**copy_map(char **map, int size);
+
+//set.c
+void	set_img(char **patch, char *tmp);
+void	set_game(t_game *g, t_info *info);
 
 #endif

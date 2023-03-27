@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 02:13:36 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/27 00:50:34 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/27 09:05:48 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,6 @@ char	**copy_map(char **map, int size)
 	}
 	tmp[i] = NULL;
 	return (tmp);
-}
-
-void	set_img(t_game *g, t_info *info)
-{
-	g->xpm.no = mlx_xpm_file_to_image(g->mlx, info->img.no, NULL, NULL); //need set w,h
-	g->xpm.so = mlx_xpm_file_to_image(g->mlx, info->img.so, NULL, NULL);
-	g->xpm.ea = mlx_xpm_file_to_image(g->mlx, info->img.ea, NULL, NULL);
-	g->xpm.we = mlx_xpm_file_to_image(g->mlx, info->img.we, NULL, NULL);
 }
 
 void	verline(t_game *g, int x, int start, int end, int color)
@@ -179,29 +171,12 @@ int	test(t_game *g)
 	return (0);
 }
 
-void	set_game(t_game *g, t_info *info)
-{
-	set_img(g, info);
-	g->map = copy_map(info->map, info->size);
-	g->f_color = info->f_color;
-	if (!g->f_color)
-		printErr("Floor RGB value ERR");
-	g->c_color = info->c_color;
-	if (!g->c_color)
-		printErr("Ceiling RGB value ERR");
-	
-}
-
-
 void	start_game(t_info *info)
 {
-	t_game g;
+	t_game	g;
 
-	g.pos.x = 4;
-	g.pos.y = 4;
+	ft_bzero(&g, sizeof(t_game));
 	g.dir.x = -1;
-	g.dir.y = 0;
-	g.plane.x = 0;
 	g.plane.y = 0.66;
 	g.mlx = mlx_init();
 	g.win = mlx_new_window(g.mlx, WIDTH, HEIGHT, "Cub3D");
@@ -209,7 +184,6 @@ void	start_game(t_info *info)
 	free_info(info);
 	//testcode
 	mlx_loop_hook(g.mlx, &test, &g);
-
 	mlx_hook(g.win, 17, 0, end_game, &g);
 	mlx_hook(g.win, 2, 0, key_event, &g);
 	mlx_loop(g.mlx);

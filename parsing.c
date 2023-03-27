@@ -6,13 +6,13 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 01:09:04 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/26 21:22:18 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/27 08:29:41 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-static int	checkType(char *str, char *type)
+static int	check_type(char *str, char *type)
 {
 	int		len;
 	char	*tmp;
@@ -31,9 +31,9 @@ static int	checkType(char *str, char *type)
 static void	parse_av(int argc, char **argv)
 {
 	if (argc != 2)
-		printErr("Check argument");
-	if (checkType(argv[1], ".cub"))
-		printErr("Check File type");
+		print_err("Check argument");
+	if (check_type(argv[1], ".cub"))
+		print_err("Check File type");
 }
 
 static void	parse_info(t_info *info)
@@ -43,14 +43,14 @@ static void	parse_info(t_info *info)
 	i = -1;
 	while (++i < info->size)
 		is_xpm(info->map[i], info);
-	if (checkType(info->img.no, ".xpm") || checkType(info->img.so, ".xpm") || \
-		checkType(info->img.we, ".xpm") || checkType(info->img.ea, ".xpm"))
-		printErr("Check File type");
+	if (check_type(info->img.no, ".xpm") || check_type(info->img.so, ".xpm") || \
+		check_type(info->img.we, ".xpm") || check_type(info->img.ea, ".xpm"))
+		print_err("Check File type");
 }
 
 void	parsing(int argc, char **argv, t_info *info)
 {
 	parse_av(argc, argv);
-	get_info(info, argv); //gnl + init info (before parse?)
-	parse_info(info); //parse map > xpmfile
+	get_info(info, argv);
+	parse_info(info);
 }
