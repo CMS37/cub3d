@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 02:13:36 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/27 09:11:04 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/27 11:08:34 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,8 +180,7 @@ void	start_game(t_info *info)
 	g.win = mlx_new_window(g.mlx, WIDTH, HEIGHT, "Cub3D");
 	set_game(&g, info);
 	free_info(info);
-	//testcode
-	mlx_loop_hook(g.mlx, &test, &g);
+	mlx_loop_hook(g.mlx, &test, &g);		//testcode
 	mlx_hook(g.win, 17, 0, end_game, &g);
 	mlx_hook(g.win, 2, 0, key_event, &g);
 	mlx_loop(g.mlx);

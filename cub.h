@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 00:52:17 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/27 09:07:09 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/27 11:30:50 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 
 # define WIDTH 640
 # define HEIGHT 480
+# define IMG_WIDTH 64
+# define IMG_HEIGHT 64
 
 typedef struct s_img
 {
@@ -38,6 +40,17 @@ typedef struct s_img
 	char	*we;
 	char	*ea;
 } t_img;
+
+typedef struct s_imgptr
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		len;
+	int		end;
+	int		width;
+	int		height;
+} t_imgptr;
 
 typedef struct s_info
 {
@@ -49,13 +62,13 @@ typedef struct s_info
 	t_img	img;
 } t_info;
 
-typedef struct s_xpm
+typedef struct s_tex
 {
-	void	*no;
-	void	*so;
-	void	*we;
-	void	*ea;
-} t_xpm;
+	t_imgptr	no;
+	t_imgptr	so;
+	t_imgptr	we;
+	t_imgptr	ea;
+} t_tex;
 
 typedef struct	s_vec
 {
@@ -76,11 +89,12 @@ typedef struct s_game
 	char		**map;
 	int			f_color;
 	int			c_color;
-	t_vec		pos;//플레이어의 위치 좌표
-	t_vec		dir;  //백터 좌표
-	t_vec		plane;   //fov시야각 좌표
-	t_vec		ray; //광선 방향 벡터
-	t_xpm		xpm;
+	int			angle;
+	t_vec		pos;	//플레이어의 위치 좌표
+	t_vec		dir;	//백터 좌표
+	t_vec		plane;	//fov시야각 좌표
+	t_vec		ray;	//광선 방향 벡터
+	t_tex		tex;
 }	t_game;
 
 //use libft
