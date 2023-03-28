@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 00:52:17 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/27 18:39:52 by min-cho          ###   ########.fr       */
+/*   Updated: 2023/03/28 17:33:18 by min-cho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ typedef struct s_game
 	t_vec		plane;	//fov시야각 좌표
 	t_vec		ray;	//광선 방향 벡터
 	t_tex		tex;
-	int			buf[HEIGHT][WIDTH];
+	char		buf[HEIGHT][WIDTH];
 	t_imgptr	window_img;
 }	t_game;
 

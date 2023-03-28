@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:40:18 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/27 18:56:46 by min-cho          ###   ########.fr       */
+/*   Updated: 2023/03/28 17:32:45 by min-cho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,20 +121,21 @@ void	raycasting(t_game *g)
 		{
 			texture.y = (int)tex_pos & (IMG_HEIGHT - 1);
 			tex_pos += tex_step;
-			if ((g->ray.x * g->ray.x) > (g->ray.y * g->ray.y))
-		{
-			if (g->ray.x > 0)
-				texture_num = 3;
+			
+			if (side == 0)
+			{
+				if (g->ray.x > 0)
+					texture_num = 3;
+				else
+					texture_num = 2;
+			}
 			else
-				texture_num = 2;
-		}
-		else
-		{
-			if (g->ray.y > 0)
-				texture_num = 1;
-			else
-				texture_num = 0;
-		}
+			{
+				if (g->ray.y > 0)
+					texture_num = 1;
+				else
+					texture_num = 0;
+			}
 
 			if (texture_num == 0)
 				color = ((int *)(g->tex.no.addr))[IMG_HEIGHT * texture.y + texture.x];
