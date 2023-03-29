@@ -6,7 +6,7 @@
 #    By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/11 18:53:50 by min-cho           #+#    #+#              #
-#    Updated: 2023/03/29 18:35:35 by min-cho          ###   ########seoul.kr   #
+#    Updated: 2023/03/29 21:33:34 by min-cho          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,10 +31,10 @@ SRCS =	gnl/ft_split.c \
 		srcs/get.c \
 		srcs/error.c \
 		srcs/parsing.c \
-		srcs/start.c \
+		srcs/is.c \
 		srcs/set.c \
-		srcs/test.c \
-		srcs/is.c
+		srcs/start.c \
+		srcs/test.c
 
 
 OBJS := ${SRCS:%.c=${OBJS_DIR}/%.o}
@@ -65,4 +65,9 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+n:
+	@ norminette gnl/*.h
+	@ norminette srcs/*.h
+	@ norminette ${SRCS}
+
+.PHONY: all clean fclean re n

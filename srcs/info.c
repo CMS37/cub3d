@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 01:19:16 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/29 19:37:17 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/29 21:20:54 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	rgb_to_hex(int *hex, char **str)
 	free_map(str);
 }
 
-int	is_xpm(char *tmp, t_info *info)
+int	set_info(char *tmp, t_info *info)
 {
 	if (tmp[0] == 'N' && tmp[1] == 'O')
 		set_img(&(info->img.no), tmp + 3);
@@ -75,15 +75,17 @@ int	is_xpm(char *tmp, t_info *info)
 		set_img(&(info->img.ea), tmp + 3);
 	else if (tmp[0] == 'F')
 	{
-		if (tmp[1] != ' ')
+		if (tmp[1] != ' ' || info->f_flag != 0)
 			print_err("Floor - Check Map identifier");
 		rgb_to_hex(&(info->f_color), ft_split(tmp + 2, ','));
+		info->f_flag += 1;
 	}
 	else if (tmp[0] == 'C')
 	{
-		if (tmp[1] != ' ')
+		if (tmp[1] != ' ' || info->c_flag != 0)
 			print_err("Ceiling - Check Map identifier");
 		rgb_to_hex(&(info->c_color), ft_split(tmp + 2, ','));
+		info->c_flag += 1;
 	}
 	else
 		return (0);

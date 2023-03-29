@@ -1,11 +1,11 @@
 NO ./texture/no.xpm
-SO ./texture/so.xpm
 EA ./texture/ea.xpm
+SO ./texture/so.xpm
 WE ./texture/we.xpm
 
-F 1,1,1
-F 2,2,2
-C 110,110,110
+
+F 0,0,125
+C 0,0,125
 
 111111
 100001

@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 00:52:17 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/29 19:30:20 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/29 21:41:10 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,9 @@
 
 # include "../mlx/mlx.h"
 # include "../gnl/get_next_line.h" //unistd, stdlib
-# include <fcntl.h>
 # include <stdio.h>
+# include <fcntl.h>
 # include <math.h>
-# include <string.h>
 
 # define SIZE	64
 
@@ -41,7 +40,7 @@ typedef struct s_img
 	char	*so;
 	char	*we;
 	char	*ea;
-} t_img;
+}	t_img;
 
 typedef struct s_imgptr
 {
@@ -52,17 +51,19 @@ typedef struct s_imgptr
 	int		end;
 	int		width;
 	int		height;
-} t_imgptr;
+}	t_imgptr;
 
 typedef struct s_info
 {
 	char	**map;
 	char	**rgb;
 	int		size;
+	int		f_flag;
+	int		c_flag;
 	int		f_color;
 	int		c_color;
 	t_img	img;
-} t_info;
+}	t_info;
 
 typedef struct s_tex
 {
@@ -70,13 +71,13 @@ typedef struct s_tex
 	t_imgptr	so;
 	t_imgptr	we;
 	t_imgptr	ea;
-} t_tex;
+}	t_tex;
 
-typedef struct	s_vec
+typedef struct s_vec
 {
 	double	x;
 	double	y;
-} t_vec;
+}	t_vec;
 
 typedef struct s_vec_int
 {
@@ -84,26 +85,18 @@ typedef struct s_vec_int
 	int	y;
 }	t_vec_int;
 
-
-typedef struct s_player
-{
-	int	x;
-	int	y;
-} t_player;
-
 typedef struct s_game
 {
 	void		*mlx;	
 	void		*win;
 	char		**map;
-	int			MAX_Y;
 	int			f_color;
 	int			c_color;
 	int			angle;
-	t_vec		pos;	//플레이어의 위치 좌표
-	t_vec		dir;	//백터 좌표
-	t_vec		plane;	//fov시야각 좌표
-	t_vec		ray;	//광선 방향 벡터
+	t_vec		pos;
+	t_vec		dir;
+	t_vec		plane;
+	t_vec		ray;
 	t_tex		tex;
 	char		buf[HEIGHT][WIDTH];
 	t_imgptr	window_img;
@@ -126,7 +119,7 @@ void	parsing(int argc, char **argv, t_info *info);
 void	get_info(t_info *info, char **argv);
 
 //info.c
-int		is_xpm(char *tmp, t_info *info);
+int		set_info(char *tmp, t_info *info);
 
 //main.c
 void	free_map(char **map);
@@ -141,11 +134,11 @@ void	set_img(char **patch, char *tmp);
 void	set_game(t_game *g, t_info *info);
 
 //test.c
-int	test(t_game *g);
+int		test(t_game *g);
 
 //is.c
-int	is_player(char c);
-int	is_closed(t_game *g, int x, int y);
-int	map_identi(char c);
+int		is_player(char c);
+int		is_closed(t_game *g, int x, int y);
+int		map_identi(char c);
 
 #endif

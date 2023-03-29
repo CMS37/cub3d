@@ -6,14 +6,11 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:40:18 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/28 17:32:45 by min-cho          ###   ########.fr       */
+/*   Updated: 2023/03/29 21:40:55 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./cub.h"
-#include <math.h>
-//for test
-#include <stdio.h>
+#include "cub.h"
 
 void	raycasting(t_game *g)
 {
