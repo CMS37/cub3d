@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 00:52:17 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/29 21:41:10 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/29 22:22:55 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,10 @@ typedef struct s_imgptr
 typedef struct s_info
 {
 	char	**map;
-	char	**rgb;
 	int		size;
 	int		f_flag;
-	int		c_flag;
 	int		f_color;
+	int		c_flag;
 	int		c_color;
 	t_img	img;
 }	t_info;

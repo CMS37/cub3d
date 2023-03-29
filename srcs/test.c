@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:40:18 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/29 21:40:55 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/29 21:49:52 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	raycasting(t_game *g)
 	int			y_cnt;
 	int			color;
 
-	x_cnt = 0;
+	x_cnt = 0;	
 	while (x_cnt < WIDTH)
 	{
 		g->ray.x = g->dir.x + g->plane.x * (2 * x_cnt / (double)WIDTH - 1);

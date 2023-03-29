@@ -6,7 +6,7 @@
 #    By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/11 18:53:50 by min-cho           #+#    #+#              #
-#    Updated: 2023/03/29 21:33:34 by min-cho          ###   ########seoul.kr   #
+#    Updated: 2023/03/29 22:04:54 by min-cho          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = cub3D
 CUB = cub
 MLX = mlx
 CC = gcc
-CFLAGS = 
+CFLAGS =
 LIB = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 OBJS_DIR	= ./objs
