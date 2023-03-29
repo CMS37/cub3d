@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 09:01:07 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/30 00:22:41 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/30 01:38:47 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ void	load_img(t_game *g, t_info *info)
 										&g->tex.ea.width, &g->tex.ea.height);
 	if (!g->tex.no.img || !g->tex.so.img || !g->tex.ea.img || !g->tex.we.img)
 		print_err("Check XPM file!");
-	g->tex.no.addr = (int *)mlx_get_data_addr(g->tex.no.img, &g->tex.no.bpp, \
+	g->tex.no.addr = (unsigned int *)mlx_get_data_addr(g->tex.no.img, &g->tex.no.bpp, \
 										&g->tex.no.len, &g->tex.no.end);
-	g->tex.so.addr = (int *)mlx_get_data_addr(g->tex.so.img, &g->tex.so.bpp, \
+	g->tex.so.addr = (unsigned int *)mlx_get_data_addr(g->tex.so.img, &g->tex.so.bpp, \
 										&g->tex.so.len, &g->tex.so.end);
-	g->tex.we.addr = (int *)mlx_get_data_addr(g->tex.we.img, &g->tex.we.bpp, \
+	g->tex.we.addr = (unsigned int *)mlx_get_data_addr(g->tex.we.img, &g->tex.we.bpp, \
 										&g->tex.we.len, &g->tex.we.end);
-	g->tex.ea.addr = (int *)mlx_get_data_addr(g->tex.ea.img, &g->tex.ea.bpp, \
+	g->tex.ea.addr = (unsigned int *)mlx_get_data_addr(g->tex.ea.img, &g->tex.ea.bpp, \
 										&g->tex.ea.len, &g->tex.ea.end);
 }
 

@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:40:18 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/30 00:47:18 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/30 01:32:38 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	raycasting(t_game *g)
 	int			y_cnt;
 	int			color;
 
-	x_cnt = 0;	
+	x_cnt = 0;
 	while (x_cnt < WIDTH)
 	{
 		g->ray.x = g->dir.x + g->plane.x * (2 * x_cnt / (double)WIDTH - 1);
@@ -89,7 +89,7 @@ void	raycasting(t_game *g)
 			perp_wall_dist = (map.y - g->pos.y + (1 - step.y) / 2) / g->ray.y;
 
 		line_hight = (int)(HEIGHT / perp_wall_dist);
-		
+
 		draw_start = -line_hight / 2 + HEIGHT / 2;
 		if (draw_start < 0)
 			draw_start = 0;
@@ -118,7 +118,7 @@ void	raycasting(t_game *g)
 		{
 			texture.y = (int)tex_pos & (IMG_HEIGHT - 1);
 			tex_pos += tex_step;
-			
+
 			if (side == 0)
 			{
 				if (g->ray.x > 0)

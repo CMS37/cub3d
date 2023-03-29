@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 18:50:34 by marvin            #+#    #+#             */
-/*   Updated: 2023/03/29 22:14:21 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/30 01:36:44 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,11 @@ void	get_info(t_info *info, char **argv)
 		if (!tmp)
 			break ;
 		if (ft_strcmp(tmp, "\n"))
-		{
 			info->size++;
-			tmp2 = ft_strdup(line);
-			free(line);
-			line = ft_strjoin(tmp2, tmp);
-			free(tmp2);
-		}
+		tmp2 = ft_strdup(line);
+		free(line);
+		line = ft_strjoin(tmp2, tmp);
+		free(tmp2);
 		free(tmp);
 	}
 	info->map = ft_split(line, '\n');

@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 02:13:36 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/30 00:22:53 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/30 01:39:59 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,10 +119,9 @@ void	start_game(t_info *info)
 	set_game(&g, info);
 	free_info(info);
 	g.window_img.img = mlx_new_image(g.mlx, WIDTH, WIDTH);
-	g.window_img.addr = (int *)mlx_get_data_addr(g.window_img.img, &g.window_img.bpp, &g.window_img.len, &g.window_img.end);
+	g.window_img.addr = (unsigned int *)mlx_get_data_addr(g.window_img.img, &g.window_img.bpp, &g.window_img.len, &g.window_img.end);
 	mlx_loop_hook(g.mlx, &test, &g);		//testcode
 	mlx_hook(g.win, 17, 0, end_game, &g);
 	mlx_hook(g.win, 2, 0, key_event, &g);
 	mlx_loop(g.mlx);
 }
-

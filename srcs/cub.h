@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 00:52:17 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/30 00:21:42 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/30 01:39:49 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ typedef struct s_img
 
 typedef struct s_imgptr
 {
-	void	*img;
-	int		*addr;
-	int		bpp;
-	int		len;
-	int		end;
-	int		width;
-	int		height;
+	void			*img;
+	unsigned int	*addr;
+	int				bpp;
+	int				len;
+	int				end;
+	int				width;
+	int				height;
 }	t_imgptr;
 
 typedef struct s_info
@@ -86,19 +86,19 @@ typedef struct s_vec_int
 
 typedef struct s_game
 {
-	void		*mlx;	
-	void		*win;
-	char		**map;
-	int			f_color;
-	int			c_color;
-	int			angle;
-	t_vec		pos;
-	t_vec		dir;
-	t_vec		plane;
-	t_vec		ray;
-	t_tex		tex;
-	int		buf[HEIGHT][WIDTH];
-	t_imgptr	window_img;
+	void			*mlx;	
+	void			*win;
+	char			**map;
+	int				f_color;
+	int				c_color;
+	int				angle;
+	t_vec			pos;
+	t_vec			dir;
+	t_vec			plane;
+	t_vec			ray;
+	t_tex			tex;
+	unsigned int	buf[HEIGHT][WIDTH];
+	t_imgptr		window_img;
 }	t_game;
 
 //use libft
