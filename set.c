@@ -6,11 +6,25 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 09:01:07 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/27 17:01:11 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/29 18:02:01 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+static char	*check_xpm_file(char *tmp)
+{
+	int	fd;
+
+	fd = open(tmp, O_RDONLY);
+	if (fd < 0)
+	{
+		close(fd);
+		print_err("Fail Open Xpm Files");
+	}
+	close(fd);
+	return (ft_strdup(tmp));
+}
 
 void	set_img(char **patch, char *tmp)
 {

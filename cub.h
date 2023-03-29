@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 00:52:17 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/27 16:39:12 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/29 18:01:57 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,6 @@ void	get_info(t_info *info, char **argv);
 
 //info.c
 int		is_xpm(char *tmp, t_info *info);
-char	*check_xpm_file(char *tmp);
 
 //main.c
 void	free_map(char **map);
