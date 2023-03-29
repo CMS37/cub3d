@@ -6,7 +6,7 @@
 #    By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/11 18:53:50 by min-cho           #+#    #+#              #
-#    Updated: 2023/03/27 16:47:22 by min-cho          ###   ########seoul.kr   #
+#    Updated: 2023/03/29 18:35:35 by min-cho          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,15 +26,15 @@ SRCS =	gnl/ft_split.c \
 		utils/ft_strlcat.c \
 		utils/ft_bzero.c \
 		utils/ft_atoi.c \
-		main.c \
-		info.c \
-		get.c \
-		error.c \
-		parsing.c \
-		start.c \
-		set.c \
-		test.c \
-		is.c
+		srcs/main.c \
+		srcs/info.c \
+		srcs/get.c \
+		srcs/error.c \
+		srcs/parsing.c \
+		srcs/start.c \
+		srcs/set.c \
+		srcs/test.c \
+		srcs/is.c
 
 
 OBJS := ${SRCS:%.c=${OBJS_DIR}/%.o}
@@ -45,6 +45,7 @@ ${OBJS_DIR}:
 	@mkdir ${OBJS_DIR}
 	@mkdir ${OBJS_DIR}/gnl
 	@mkdir ${OBJS_DIR}/utils
+	@mkdir ${OBJS_DIR}/srcs
 
 $(MLX):
 	@ make -C mlx

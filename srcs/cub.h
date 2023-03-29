@@ -6,15 +6,15 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 00:52:17 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/29 18:01:57 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/29 18:36:03 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB_H
 # define CUB_H
 
-# include "mlx/mlx.h"
-# include "gnl/get_next_line.h" //unistd, stdlib
+# include "../mlx/mlx.h"
+# include "../gnl/get_next_line.h" //unistd, stdlib
 # include <fcntl.h>
 # include <stdio.h>
 # include <math.h>

@@ -6,11 +6,11 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 00:28:47 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/27 00:29:56 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/29 18:36:32 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub.h"
+#include "../srcs/cub.h"
 
 int	white_space(char c)
 {
