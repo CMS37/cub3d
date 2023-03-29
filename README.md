@@ -1,6 +1,7 @@
 -------------------
 ## 남은 작업들
 
-+mlx_loop_hook 완성
- +KEY EVENT 만들기
-+RGB값에 0,0,0(BLACK)을 넣을때 0x000000값이 되서 에러로 빠져버림
++ mlx_loop_hook 완성
+	+ KEY EVENT 만들기
+
++ RGB값에 0,0,0(BLACK)을 넣을때 0x000000값이 되서 에러로 빠져버림
