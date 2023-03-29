@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 09:01:07 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/29 18:02:01 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/29 19:38:52 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static char	*check_xpm_file(char *tmp)
 void	set_img(char **patch, char *tmp)
 {
 	if ((*patch))
-		print_err("Check Map identifier");
+		print_err("NESW - Check Map identifier");
 	(*patch) = check_xpm_file(tmp);
 }
 
@@ -90,11 +90,11 @@ void	set_game(t_game *g, t_info *info)
 
 	g->map = copy_map(info->map, info->size);
 	g->f_color = info->f_color;
-	if (!g->f_color)
-		print_err("Floor RGB value ERR");
+	// if (!g->f_color)
+	// 	print_err("Floor RGB value ERR");
 	g->c_color = info->c_color;
-	if (!g->c_color)
-		print_err("Ceiling RGB value ERR");
+	// if (!g->c_color)
+	// 	print_err("Ceiling RGB value ERR");
 	set_pos(g);
 	if (g->pos.x == 0 || g->pos.y == 0)
 		print_err("Wrong MAP!");
