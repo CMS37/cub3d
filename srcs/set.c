@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 09:01:07 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/30 01:38:47 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/30 02:00:20 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,14 @@ void	load_img(t_game *g, t_info *info)
 										&g->tex.ea.width, &g->tex.ea.height);
 	if (!g->tex.no.img || !g->tex.so.img || !g->tex.ea.img || !g->tex.we.img)
 		print_err("Check XPM file!");
-	g->tex.no.addr = (unsigned int *)mlx_get_data_addr(g->tex.no.img, &g->tex.no.bpp, \
-										&g->tex.no.len, &g->tex.no.end);
-	g->tex.so.addr = (unsigned int *)mlx_get_data_addr(g->tex.so.img, &g->tex.so.bpp, \
-										&g->tex.so.len, &g->tex.so.end);
-	g->tex.we.addr = (unsigned int *)mlx_get_data_addr(g->tex.we.img, &g->tex.we.bpp, \
-										&g->tex.we.len, &g->tex.we.end);
-	g->tex.ea.addr = (unsigned int *)mlx_get_data_addr(g->tex.ea.img, &g->tex.ea.bpp, \
-										&g->tex.ea.len, &g->tex.ea.end);
+	g->tex.no.addr = (unsigned int *)mlx_get_data_addr(g->tex.no.img, \
+					&g->tex.no.bpp, &g->tex.no.len, &g->tex.no.end);
+	g->tex.so.addr = (unsigned int *)mlx_get_data_addr(g->tex.so.img, \
+					&g->tex.so.bpp, &g->tex.so.len, &g->tex.so.end);
+	g->tex.we.addr = (unsigned int *)mlx_get_data_addr(g->tex.we.img, \
+					&g->tex.we.bpp, &g->tex.we.len, &g->tex.we.end);
+	g->tex.ea.addr = (unsigned int *)mlx_get_data_addr(g->tex.ea.img, \
+					&g->tex.ea.bpp, &g->tex.ea.len, &g->tex.ea.end);
 }
 
 static void	set_pos(t_game *g)
@@ -89,6 +89,7 @@ void	set_game(t_game *g, t_info *info)
 	g->f_color = info->f_color;
 	g->c_color = info->c_color;
 	set_pos(g);
+	// set_fov(g);
 	if (g->pos.x == 0 || g->pos.y == 0)
 		print_err("Wrong MAP!");
 	g->dir.x = -1;

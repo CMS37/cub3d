@@ -6,14 +6,14 @@
 #    By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/11 18:53:50 by min-cho           #+#    #+#              #
-#    Updated: 2023/03/29 22:28:21 by min-cho          ###   ########seoul.kr   #
+#    Updated: 2023/03/30 01:46:08 by min-cho          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 CUB = cub
 MLX = mlx
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 LIB = -Lmlx -lmlx -framework OpenGL -framework AppKit
 

@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 02:13:36 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/30 01:39:59 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/30 01:54:25 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	end_game(t_game *g)
 	return (0);
 }
 
-static int key_event(int input, t_game *g)
+static int	key_event(int input, t_game *g)
 {
 	if (input == KEY_ESC)
 		end_game(g);
@@ -81,9 +81,9 @@ char	**copy_map(char **map, int size)
 
 	tmp = (char **)malloc(sizeof(char *) * (size - 5));
 	if (!tmp)
-		return(NULL);
+		return (NULL);
 	i = 0;
-	while(map[i + 6])
+	while (map[i + 6])
 	{
 		tmp[i] = ft_strdup(map[i + 6]);
 		if (!tmp[i])
@@ -97,18 +97,6 @@ char	**copy_map(char **map, int size)
 	return (tmp);
 }
 
-void	verline(t_game *g, int x, int start, int end, int color)
-{
-	int y;
-	
-	y = start;
-	while (y <= end)
-	{
-		mlx_pixel_put(g->mlx, g->win, x, y, color);
-		y++;
-	}
-}
-
 void	start_game(t_info *info)
 {
 	t_game	g;
@@ -119,8 +107,9 @@ void	start_game(t_info *info)
 	set_game(&g, info);
 	free_info(info);
 	g.window_img.img = mlx_new_image(g.mlx, WIDTH, WIDTH);
-	g.window_img.addr = (unsigned int *)mlx_get_data_addr(g.window_img.img, &g.window_img.bpp, &g.window_img.len, &g.window_img.end);
-	mlx_loop_hook(g.mlx, &test, &g);		//testcode
+	g.window_img.addr = (unsigned int *)mlx_get_data_addr(g.window_img.img, \
+					&g.window_img.bpp, &g.window_img.len, &g.window_img.end);
+	mlx_loop_hook(g.mlx, &test, &g);
 	mlx_hook(g.win, 17, 0, end_game, &g);
 	mlx_hook(g.win, 2, 0, key_event, &g);
 	mlx_loop(g.mlx);
