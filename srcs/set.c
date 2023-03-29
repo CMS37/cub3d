@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 09:01:07 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/29 21:26:51 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/29 22:28:31 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,6 @@ static void	set_pos(t_game *g)
 
 void	set_game(t_game *g, t_info *info)
 {
-	int	x;
-	int	y;
-
 	g->map = copy_map(info->map, info->size);
 	g->f_color = info->f_color;
 	g->c_color = info->c_color;
