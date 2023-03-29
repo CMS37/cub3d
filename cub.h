@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 00:52:17 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/28 17:33:18 by min-cho          ###   ########.fr       */
+/*   Updated: 2023/03/29 18:01:57 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ typedef struct s_game
 	void		*mlx;	
 	void		*win;
 	char		**map;
+	int			MAX_Y;
 	int			f_color;
 	int			c_color;
 	int			angle;
@@ -126,7 +127,6 @@ void	get_info(t_info *info, char **argv);
 
 //info.c
 int		is_xpm(char *tmp, t_info *info);
-char	*check_xpm_file(char *tmp);
 
 //main.c
 void	free_map(char **map);
@@ -142,5 +142,10 @@ void	set_game(t_game *g, t_info *info);
 
 //test.c
 int	test(t_game *g);
+
+//is.c
+int	is_player(char c);
+int	is_closed(t_game *g, int x, int y);
+int	map_identi(char c);
 
 #endif

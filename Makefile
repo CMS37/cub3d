@@ -6,7 +6,7 @@
 #    By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/11 18:53:50 by min-cho           #+#    #+#              #
-#    Updated: 2023/03/27 17:22:10 by min-cho          ###   ########.fr        #
+#    Updated: 2023/03/27 16:47:22 by min-cho          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ SRCS =	gnl/ft_split.c \
 		parsing.c \
 		start.c \
 		set.c \
-		test.c
+		test.c \
+		is.c
 
 
 OBJS := ${SRCS:%.c=${OBJS_DIR}/%.o}

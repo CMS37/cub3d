@@ -6,11 +6,25 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 09:01:07 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/27 13:45:02 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/29 18:02:01 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+static char	*check_xpm_file(char *tmp)
+{
+	int	fd;
+
+	fd = open(tmp, O_RDONLY);
+	if (fd < 0)
+	{
+		close(fd);
+		print_err("Fail Open Xpm Files");
+	}
+	close(fd);
+	return (ft_strdup(tmp));
+}
 
 void	set_img(char **patch, char *tmp)
 {
@@ -22,7 +36,7 @@ void	set_img(char **patch, char *tmp)
 void	load_img(t_game *g, t_info *info)
 {
 	g->tex.no.img = mlx_xpm_file_to_image(g->mlx, info->img.no, \
-										&g->tex.no.width, &g->tex.no.height);\
+										&g->tex.no.width, &g->tex.no.height);
 	g->tex.so.img = mlx_xpm_file_to_image(g->mlx, info->img.so, \
 										&g->tex.so.width, &g->tex.so.height);
 	g->tex.we.img = mlx_xpm_file_to_image(g->mlx, info->img.we, \
@@ -52,19 +66,21 @@ static void	set_pos(t_game *g)
 		x = 0;
 		while (g->map[y][x])
 		{
-			if (g->map[y][x] == 'N' || g->map[y][x] == 'S' || \
-				g->map[y][x] == 'E' || g->map[y][x] == 'W')
+			if (map_identi(g->map[y][x]))
+				print_err("Map only use 10NESW");
+			if (is_closed(g, x, y))
+				print_err("Map is not closed");
+			if (is_player(g->map[y][x]))
 			{
-				g->pos.x = x;
-				g->pos.y = y;
-				// g->angle = 스폰방향에따라 바라보는방향 조정?
+				if (g->pos.x || g->pos.y)
+					print_err("So many NSEW");
+				g->pos.x = x + 0.5;
+				g->pos.y = y + 0.5;
 			}
 			x++;
 		}
 		y++;
 	}
-	if (!g->pos.x || !g->pos.y)
-		print_err("Wrong Map");
 }
 
 void	set_game(t_game *g, t_info *info)
@@ -80,6 +96,8 @@ void	set_game(t_game *g, t_info *info)
 	if (!g->c_color)
 		print_err("Ceiling RGB value ERR");
 	set_pos(g);
+	if (g->pos.x == 0 || g->pos.y == 0)
+		print_err("Wrong MAP!");
 	g->dir.x = -1;
 	g->plane.x = 0;
 	g->plane.y = 0.66;
