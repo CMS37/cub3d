@@ -6,10 +6,14 @@
 make n
 ```
 + norm검사 명령어 추가
+
+<br>
+
 -------------------
 # 작업목록
 #### 하면서 발견한 버그목록도 추가
 + mlx_loop_hook 화면 4분할되는중
+	+ [link](https://stdbc.tistory.com/62)
 
 + NESW값에 따라 바라보는 방향설정값 넣기
 ```C

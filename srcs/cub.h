@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 00:52:17 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/29 22:22:55 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/30 00:21:42 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_img
 typedef struct s_imgptr
 {
 	void	*img;
-	char	*addr;
+	int		*addr;
 	int		bpp;
 	int		len;
 	int		end;
@@ -97,7 +97,7 @@ typedef struct s_game
 	t_vec		plane;
 	t_vec		ray;
 	t_tex		tex;
-	char		buf[HEIGHT][WIDTH];
+	int		buf[HEIGHT][WIDTH];
 	t_imgptr	window_img;
 }	t_game;
 
