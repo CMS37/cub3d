@@ -6,11 +6,12 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 02:13:36 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/27 13:53:08 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/27 18:54:43 by min-cho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+#include <math.h>
 
 static int	end_game(t_game *g)
 {
@@ -23,14 +24,53 @@ static int key_event(int input, t_game *g)
 {
 	if (input == KEY_ESC)
 		end_game(g);
-	if (input == KEY_A)
-		;
-	if (input == KEY_D)
-		;
 	if (input == KEY_W)
-		;
+	{
+		if (g->map[(int)(g->pos.x + g->dir.x * 0.05)][(int)(g->pos.y)] == '0')
+			g->pos.x += g->dir.x * 0.05;
+		if (g->map[(int)(g->pos.x)][(int)(g->pos.y + g->dir.y * 0.05)] == '0')
+			g->pos.y += g->dir.y * 0.05;
+	}
 	if (input == KEY_S)
-		;
+	{
+		if (g->map[(int)(g->pos.x - g->dir.x * 0.05)][(int)(g->pos.y)] == '0')
+			g->pos.x -= g->dir.x * 0.05;
+		if (g->map[(int)(g->pos.x)][(int)(g->pos.y - g->dir.y * 0.05)] == '0')
+			g->pos.y -= g->dir.y * 0.05;
+	}
+	if (input == KEY_D)
+	{
+		if (g->map[(int)(g->pos.x + g->dir.y * 0.05)][(int)(g->pos.y)] == '0')
+			g->pos.x += g->dir.x * 0.05;
+		if (g->map[(int)(g->pos.x)][(int)(g->pos.y - g->dir.x * 0.05)] == '0')
+			g->pos.y -= g->dir.x * 0.05;
+	}
+	if (input == KEY_A)
+	{
+		if (g->map[(int)(g->pos.x - g->dir.y * 0.05)][(int)(g->pos.y)] == '0')
+			g->pos.x -= g->dir.x * 0.05;
+		if (g->map[(int)(g->pos.x)][(int)(g->pos.y + g->dir.x * 0.05)] == '0')
+			g->pos.y += g->dir.x * 0.05;
+	}
+	if (input == KEY_ARROW_LEFT)
+	{
+		//both camera direction and camera plane must be rotated
+		double oldDirX = g->dir.x;
+		g->dir.x = g->dir.x * cos(0.05) - g->dir.y * sin(0.05);
+		g->dir.y = oldDirX * sin(0.05) + g->dir.y * cos(0.05);
+		double oldPlaneX = g->plane.x;
+		g->plane.x = g->plane.x * cos(0.05) - g->plane.y * sin(0.05);
+		g->plane.y = oldPlaneX * sin(0.05) + g->plane.y * cos(0.05);
+	}
+	if (input == KEY_ARROW_RIGHT)
+	{
+		double oldDirX = g->dir.x;
+		g->dir.x = g->dir.x * cos(-0.05) - g->dir.y * sin(-0.05);
+		g->dir.y = oldDirX * sin(-0.05) + g->dir.y * cos(-0.05);
+		double oldPlaneX = g->plane.x;
+		g->plane.x = g->plane.x * cos(-0.05) - g->plane.y * sin(-0.05);
+		g->plane.y = oldPlaneX * sin(-0.05) + g->plane.y * cos(-0.05);
+	}
 	return (0);
 }
 
@@ -78,8 +118,11 @@ void	start_game(t_info *info)
 	g.win = mlx_new_window(g.mlx, WIDTH, HEIGHT, "Cub3D");
 	set_game(&g, info);
 	free_info(info);
-//	mlx_loop_hook(g.mlx, &test, &g);		//testcode
+	g.window_img.img = mlx_new_image(g.mlx, WIDTH, WIDTH);
+	g.window_img.addr = mlx_get_data_addr(g.window_img.img, &g.window_img.bpp, &g.window_img.len, &g.window_img.end);
+	mlx_loop_hook(g.mlx, &test, &g);		//testcode
 	mlx_hook(g.win, 17, 0, end_game, &g);
 	mlx_hook(g.win, 2, 0, key_event, &g);
 	mlx_loop(g.mlx);
 }
+
