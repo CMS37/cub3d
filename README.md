@@ -21,7 +21,7 @@ static void	set_pos(t_game *g)
 				print_err("Map only use 10NESW");
 			if (is_closed(g, x, y))
 				print_err("Map is not closed");
-			if (is_player(g->map[y][x]))  //NESW면 TRUE 여기서 값넣음댈듯 
+			if (is_player(g->map[y][x]))  //NESW면 TRUE 여기서 값넣음댈듯  
 			{
 				if (g->pos.x || g->pos.y)
 					print_err("So many NSEW");
