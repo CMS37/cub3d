@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 02:13:36 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/30 10:09:27 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/30 12:18:23 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,11 @@ static int	key_event(int input, t_game *g)
 	}
 	if (input == KEY_D)
 	{
-		if (g->map[(int)(g->pos.y)][(int)(g->pos.x + g->dir.y * 0.05)] == '0')
-			g->pos.x += g->dir.x * 0.05;
 		if (g->map[(int)(g->pos.y - g->dir.x * 0.05)][(int)(g->pos.x)] == '0')
 			g->pos.y -= g->dir.x * 0.05;
 	}
 	if (input == KEY_A)
 	{
-		if (g->map[(int)(g->pos.y)][(int)(g->pos.x - g->dir.y * 0.05)] == '0')
-			g->pos.x -= g->dir.x * 0.05;
 		if (g->map[(int)(g->pos.y + g->dir.x * 0.05)][(int)(g->pos.x)] == '0')
 			g->pos.y += g->dir.x * 0.05;
 	}
