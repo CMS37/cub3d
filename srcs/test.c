@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:40:18 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/30 11:50:11 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/30 12:50:46 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,14 @@ void	raycasting(t_game *g)
 			y_cnt++;
 		}
 		x_cnt++;
+	}
+	for (int y = 0; y < draw_start;++y)
+	{
+		for (int x = 0; x < WIDTH; ++x)
+		{
+			g->buf[y][x] = g->f_color;
+			g->buf[HEIGHT - y - 1][x] = g->c_color;
+		}
 	}
 }
 
