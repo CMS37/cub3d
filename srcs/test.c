@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: rhong <rhong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:40:18 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/30 13:22:53 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/30 17:51:31 by rhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,15 @@ void	raycasting(t_game *g)
 	int			y_cnt;
 	int			color;
 
+	for (int y = 0; y < HEIGHT / 2; ++y)
+	{
+		for (int x = 0; x < WIDTH; ++x)
+		{
+			g->buf[y][x] = g->f_color;
+			g->buf[HEIGHT - y - 1][x] = g->c_color;
+		}
+	}
+	
 	x_cnt = 0;
 	while (x_cnt < WIDTH)
 	{
@@ -122,16 +131,16 @@ void	raycasting(t_game *g)
 			if (side == 0)
 			{
 				if (g->ray.x > 0)
-					texture_num = 3;
-				else
 					texture_num = 2;
+				else
+					texture_num = 3;
 			}
 			else
 			{
 				if (g->ray.y > 0)
-					texture_num = 1;
-				else
 					texture_num = 0;
+				else
+					texture_num = 1;
 			}
 
 			if (texture_num == 0)
@@ -147,14 +156,7 @@ void	raycasting(t_game *g)
 		}
 		x_cnt++;
 	}
-	for (int y = 0; y < draw_start;++y)
-	{
-		for (int x = 0; x < WIDTH; ++x)
-		{
-			g->buf[y][x] = g->f_color;
-			g->buf[HEIGHT - y - 1][x] = g->c_color;
-		}
-	}
+	
 }
 
 void	draw_window(t_game *g)
