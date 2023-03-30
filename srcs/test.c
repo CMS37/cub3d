@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:40:18 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/30 01:50:52 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/30 11:11:06 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	raycasting(t_game *g)
 				map.y += step.y;
 				side = 1;
 			}
-			if (g->map[map.x][map.y] > '0')
+			if (g->map[map.y][map.x] > '0')
 				hit = 1;
 		}
 
@@ -135,9 +135,9 @@ void	raycasting(t_game *g)
 			}
 
 			if (texture_num == 0)
-				color = ((int *)(g->tex.no.addr))[IMG_HEIGHT * texture.y + texture.x];
-			else if (texture_num == 1)
 				color = ((int *)(g->tex.so.addr))[IMG_HEIGHT * texture.y + texture.x];
+			else if (texture_num == 1)
+				color = ((int *)(g->tex.no.addr))[IMG_HEIGHT * texture.y + texture.x];
 			else if (texture_num == 2)
 				color = ((int *)(g->tex.we.addr))[IMG_HEIGHT * texture.y + texture.x];
 			else

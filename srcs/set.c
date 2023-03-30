@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 09:01:07 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/30 10:11:37 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/30 11:07:45 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ static void	set_pos(t_game *g)
 					print_err("So many NSEW");
 				g->pos.x = x + 0.5;
 				g->pos.y = y + 0.5;
-				g->map[y][x] = '0';
 			}
 			x++;
 		}
@@ -90,12 +89,18 @@ void	set_game(t_game *g, t_info *info)
 	g->f_color = info->f_color;
 	g->c_color = info->c_color;
 	set_pos(g);
-	// set_fov(g);
 	if (g->pos.x == 0 || g->pos.y == 0)
 		print_err("Wrong MAP!");
-	g->dir.x = -1;
-	g->dir.y = 0;
-	g->plane.x = 0;
+	if(g->map[(int)g->pos.y][(int)g->pos.x] == 'W')
+		g->dir.x += -1.0;
+	else if (g->map[(int)g->pos.y][(int)g->pos.x] == 'E')
+		g->dir.x += 1.0;
+	else if (g->map[(int)g->pos.y][(int)g->pos.x] == 'N')
+		g->dir.y += -1.0;
+	else if (g->map[(int)g->pos.y][(int)g->pos.x] == 'S')
+		g->dir.y += 1.0;
+	g->map[(int)g->pos.y][(int)g->pos.x] = '0';
+	g->plane.x = 0.0;
 	g->plane.y = 0.66;
 	load_img(g, info);
 }
