@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:40:18 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/30 12:50:46 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/30 13:22:53 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,7 @@ void	draw_window(t_game *g)
 	while (y_cnt < HEIGHT)
 	{
 		x_cnt = 0;
-		while (x_cnt < HEIGHT)
+		while (x_cnt < WIDTH)
 		{
 			g->window_img.addr[y_cnt * WIDTH + x_cnt] = g->buf[y_cnt][x_cnt];
 			x_cnt++;
