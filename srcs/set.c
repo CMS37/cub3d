@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 09:01:07 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/30 02:00:20 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/30 10:11:37 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ static void	set_pos(t_game *g)
 					print_err("So many NSEW");
 				g->pos.x = x + 0.5;
 				g->pos.y = y + 0.5;
+				g->map[y][x] = '0';
 			}
 			x++;
 		}
@@ -93,6 +94,7 @@ void	set_game(t_game *g, t_info *info)
 	if (g->pos.x == 0 || g->pos.y == 0)
 		print_err("Wrong MAP!");
 	g->dir.x = -1;
+	g->dir.y = 0;
 	g->plane.x = 0;
 	g->plane.y = 0.66;
 	load_img(g, info);
