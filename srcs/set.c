@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: rhong <rhong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 09:01:07 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/30 12:09:14 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/03/30 17:50:27 by rhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,15 +92,29 @@ void	set_game(t_game *g, t_info *info)
 	if (g->pos.x == 0 || g->pos.y == 0)
 		print_err("Wrong MAP!");
 	if (g->map[(int)g->pos.y][(int)g->pos.x] == 'W')
-		g->dir.x += -1.0;
-	else if (g->map[(int)g->pos.y][(int)g->pos.x] == 'E')
+	{
 		g->dir.x += 1.0;
+		g->plane.x = 0.0;
+		g->plane.y = -0.66;
+	}
+	else if (g->map[(int)g->pos.y][(int)g->pos.x] == 'E')
+	{
+		g->dir.x += -1.0;
+		g->plane.x = 0.0;
+		g->plane.y = 0.66;
+	}
 	else if (g->map[(int)g->pos.y][(int)g->pos.x] == 'N')
+	{
 		g->dir.y += -1.0;
+		g->plane.x = -0.66;
+		g->plane.y = 0.0;
+	}
 	else if (g->map[(int)g->pos.y][(int)g->pos.x] == 'S')
+	{
 		g->dir.y += 1.0;
+		g->plane.x = 0.66;
+		g->plane.y = 0.0;
+	}
 	g->map[(int)g->pos.y][(int)g->pos.x] = '0';
-	g->plane.x = 0.0;
-	g->plane.y = 0.66;
 	load_img(g, info);
 }
