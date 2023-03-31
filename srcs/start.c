@@ -20,56 +20,80 @@ static int	end_game(t_game *g)
 	return (0);
 }
 
+void	move_front(t_game *g)
+{
+	if (g->map[(int)g->pos.y][(int)(g->pos.x + g->dir.x * 0.05)] == '0')
+		g->pos.x += g->dir.x * 0.05;
+	if (g->map[(int)(g->pos.y + g->dir.y * 0.05)][(int)(g->pos.x)] == '0')
+		g->pos.y += g->dir.y * 0.05;
+}
+
+void	move_back(t_game *g)
+{
+	if (g->map[(int)(g->pos.y)][(int)(g->pos.x - g->dir.x * 0.05)] == '0')
+		g->pos.x -= g->dir.x * 0.05;
+	if (g->map[(int)(g->pos.y - g->dir.y * 0.05)][(int)(g->pos.x)] == '0')
+		g->pos.y -= g->dir.y * 0.05;
+}
+
+void	move_left(t_game *g)
+{
+	if (g->map[(int)(g->pos.y + g->dir.x * 0.05)][(int)(g->pos.x)] == '0')
+		g->pos.y += g->dir.x * 0.05;
+	if (g->map[(int)(g->pos.y)][(int)(g->pos.x - g->dir.x * 0.05)] == '0')
+		g->pos.x -= g->dir.y * 0.05;
+}
+
+void	move_right(t_game *g)
+{
+	if (g->map[(int)(g->pos.y - g->dir.x * 0.05)][(int)(g->pos.x)] == '0')
+		g->pos.y -= g->dir.x * 0.05;
+	if (g->map[(int)(g->pos.y)][(int)(g->pos.x - g->dir.x * 0.05)] == '0')
+		g->pos.x += g->dir.y * 0.05;
+}
+
+void	turn_left(t_game *g)
+{
+	double old_dirX;
+	double old_planeX;
+
+	old_dirX = g->dir.x;
+	g->dir.x = g->dir.x * cos(0.05) - g->dir.y * sin(0.05);
+	g->dir.y = old_dirX * sin(0.05) + g->dir.y * cos(0.05);
+	old_planeX = g->plane.x;
+	g->plane.x = g->plane.x * cos(0.05) - g->plane.y * sin(0.05);
+	g->plane.y = old_planeX * sin(0.05) + g->plane.y * cos(0.05);
+}
+
+void	turn_right(t_game *g)
+{
+	double old_dirX;
+	double old_planeX;
+
+	old_dirX = g->dir.x;
+	g->dir.x = g->dir.x * cos(-0.05) - g->dir.y * sin(-0.05);
+	g->dir.y = old_dirX * sin(-0.05) + g->dir.y * cos(-0.05);
+	old_planeX = g->plane.x;
+	g->plane.x = g->plane.x * cos(-0.05) - g->plane.y * sin(-0.05);
+	g->plane.y = old_planeX * sin(-0.05) + g->plane.y * cos(-0.05);
+}
+
 static int	key_event(int input, t_game *g)
 {
 	if (input == KEY_ESC)
 		end_game(g);
 	if (input == KEY_W)
-	{
-		if (g->map[(int)g->pos.y][(int)(g->pos.x + g->dir.x * 0.05)] == '0')
-			g->pos.x += g->dir.x * 0.05;
-		if (g->map[(int)(g->pos.y + g->dir.y * 0.05)][(int)(g->pos.x)] == '0')
-			g->pos.y += g->dir.y * 0.05;
-	}
+		move_front(g);
 	if (input == KEY_S)
-	{
-		if (g->map[(int)(g->pos.y)][(int)(g->pos.x - g->dir.x * 0.05)] == '0')
-			g->pos.x -= g->dir.x * 0.05;
-		if (g->map[(int)(g->pos.y - g->dir.y * 0.05)][(int)(g->pos.x)] == '0')
-			g->pos.y -= g->dir.y * 0.05;
-	}
+		move_back(g);
 	if (input == KEY_D)
-	{
-		if (g->map[(int)(g->pos.y - g->dir.x * 0.05)][(int)(g->pos.x)] == '0')
-			g->pos.y -= g->dir.x * 0.05;
-		if (g->map[(int)(g->pos.y)][(int)(g->pos.x - g->dir.x * 0.05)] == '0')
-			g->pos.x += g->dir.y * 0.05;
-	}
+		move_right(g);
 	if (input == KEY_A)
-	{
-		if (g->map[(int)(g->pos.y + g->dir.x * 0.05)][(int)(g->pos.x)] == '0')
-			g->pos.y += g->dir.x * 0.05;
-		if (g->map[(int)(g->pos.y)][(int)(g->pos.x - g->dir.x * 0.05)] == '0')
-			g->pos.x -= g->dir.y * 0.05;
-	}
+		move_left(g);
 	if (input == KEY_ARROW_LEFT)
-	{
-		double oldDirX = g->dir.x;
-		g->dir.x = g->dir.x * cos(0.05) - g->dir.y * sin(0.05);
-		g->dir.y = oldDirX * sin(0.05) + g->dir.y * cos(0.05);
-		double oldPlaneX = g->plane.x;
-		g->plane.x = g->plane.x * cos(0.05) - g->plane.y * sin(0.05);
-		g->plane.y = oldPlaneX * sin(0.05) + g->plane.y * cos(0.05);
-	}
+		turn_left(g);
 	if (input == KEY_ARROW_RIGHT)
-	{
-		double oldDirX = g->dir.x;
-		g->dir.x = g->dir.x * cos(-0.05) - g->dir.y * sin(-0.05);
-		g->dir.y = oldDirX * sin(-0.05) + g->dir.y * cos(-0.05);
-		double oldPlaneX = g->plane.x;
-		g->plane.x = g->plane.x * cos(-0.05) - g->plane.y * sin(-0.05);
-		g->plane.y = oldPlaneX * sin(-0.05) + g->plane.y * cos(-0.05);
-	}
+		turn_right(g);
 	return (0);
 }
 
