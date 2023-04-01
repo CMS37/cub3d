@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 00:52:17 by min-cho           #+#    #+#             */
-/*   Updated: 2023/04/01 16:52:49 by min-cho          ###   ########.fr       */
+/*   Updated: 2023/03/30 01:39:49 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,23 +142,5 @@ int		test(t_game *g);
 int		is_player(char c);
 int		is_closed(t_game *g, int x, int y);
 int		map_identi(char c);
-
-//move.c
-void	move_front(t_game *g);
-void	move_back(t_game *g);
-void	move_left(t_game *g);
-void	move_right(t_game *g);
-
-//turn.c
-void	turn_left(t_game *g);
-void	turn_right(t_game *g);
-
-//raycasting.c
-void	raycasting(t_game *g);
-
-//raycasting2.c
-void	floor_ceil_to_buf(t_game *g);
-int		get_side(t_game *g, t_vec_int *step, t_vec_int *map, int x_cnt);
-double	get_perp_wall_dist(t_game *g, t_vec_int map, t_vec_int step, int side);
 
 #endif
