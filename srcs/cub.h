@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 00:52:17 by min-cho           #+#    #+#             */
-/*   Updated: 2023/04/01 15:52:59 by min-cho          ###   ########.fr       */
+/*   Updated: 2023/04/01 16:52:49 by min-cho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,9 @@ char	**copy_map(char **map, int size);
 //set.c
 void	set_img(char **patch, char *tmp);
 void	set_game(t_game *g, t_info *info);
+
+//set2.c
+void	set_dir_plane(t_game *g);
 
 //test.c
 int		test(t_game *g);
