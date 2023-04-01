@@ -91,30 +91,7 @@ void	set_game(t_game *g, t_info *info)
 	set_pos(g);
 	if (g->pos.x == 0 || g->pos.y == 0)
 		print_err("Wrong MAP!");
-	if (g->map[(int)g->pos.y][(int)g->pos.x] == 'W')
-	{
-		g->dir.x += 1.0;
-		g->plane.x = 0.0;
-		g->plane.y = -0.66;
-	}
-	else if (g->map[(int)g->pos.y][(int)g->pos.x] == 'E')
-	{
-		g->dir.x += -1.0;
-		g->plane.x = 0.0;
-		g->plane.y = 0.66;
-	}
-	else if (g->map[(int)g->pos.y][(int)g->pos.x] == 'N')
-	{
-		g->dir.y += -1.0;
-		g->plane.x = -0.66;
-		g->plane.y = 0.0;
-	}
-	else if (g->map[(int)g->pos.y][(int)g->pos.x] == 'S')
-	{
-		g->dir.y += 1.0;
-		g->plane.x = 0.66;
-		g->plane.y = 0.0;
-	}
+	set_dir_plane(g);
 	g->map[(int)g->pos.y][(int)g->pos.x] = '0';
 	load_img(g, info);
 }

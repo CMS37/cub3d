@@ -132,6 +132,9 @@ char	**copy_map(char **map, int size);
 void	set_img(char **patch, char *tmp);
 void	set_game(t_game *g, t_info *info);
 
+//set2.c
+void	set_dir_plane(t_game *g);
+
 //test.c
 int		test(t_game *g);
 

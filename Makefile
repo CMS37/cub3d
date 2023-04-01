@@ -33,6 +33,7 @@ SRCS =	gnl/ft_split.c \
 		srcs/parsing.c \
 		srcs/is.c \
 		srcs/set.c \
+		srcs/set2.c \
 		srcs/start.c \
 		srcs/test.c
 
