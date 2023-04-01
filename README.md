@@ -23,5 +23,7 @@ make n
 
 + 가끔 벽 통과가 될 때가 있고 안될 때가 있는데 왜 그러는지 모르겠음
 
-+ 함수 분할 중입니다. 아직 테스트 되지 않았으므로 제대로 동작하지 않을 수 있습니다. 따라서 원본코드는 주석처리한 상태로 남겨놓았습니다.
++ 함수 분할 중입니다.
+	+ move.c(w, a, s, d moving), turn.c(left and right arrow turning), raycasting.c, 2.c(raycasting)
+		+ 42 header 수정
 -------------------

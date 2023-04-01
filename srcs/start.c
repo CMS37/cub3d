@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 02:13:36 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/30 14:01:35 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/04/01 15:43:47 by min-cho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,64 +18,6 @@ static int	end_game(t_game *g)
 	mlx_destroy_window(g->mlx, g->win);
 	exit(0);
 	return (0);
-}
-
-void	move_front(t_game *g)
-{
-	if (g->map[(int)g->pos.y][(int)(g->pos.x + g->dir.x * 0.05)] == '0')
-		g->pos.x += g->dir.x * 0.05;
-	if (g->map[(int)(g->pos.y + g->dir.y * 0.05)][(int)(g->pos.x)] == '0')
-		g->pos.y += g->dir.y * 0.05;
-}
-
-void	move_back(t_game *g)
-{
-	if (g->map[(int)(g->pos.y)][(int)(g->pos.x - g->dir.x * 0.05)] == '0')
-		g->pos.x -= g->dir.x * 0.05;
-	if (g->map[(int)(g->pos.y - g->dir.y * 0.05)][(int)(g->pos.x)] == '0')
-		g->pos.y -= g->dir.y * 0.05;
-}
-
-void	move_left(t_game *g)
-{
-	if (g->map[(int)(g->pos.y + g->dir.x * 0.05)][(int)(g->pos.x)] == '0')
-		g->pos.y += g->dir.x * 0.05;
-	if (g->map[(int)(g->pos.y)][(int)(g->pos.x - g->dir.x * 0.05)] == '0')
-		g->pos.x -= g->dir.y * 0.05;
-}
-
-void	move_right(t_game *g)
-{
-	if (g->map[(int)(g->pos.y - g->dir.x * 0.05)][(int)(g->pos.x)] == '0')
-		g->pos.y -= g->dir.x * 0.05;
-	if (g->map[(int)(g->pos.y)][(int)(g->pos.x - g->dir.x * 0.05)] == '0')
-		g->pos.x += g->dir.y * 0.05;
-}
-
-void	turn_left(t_game *g)
-{
-	double old_dirX;
-	double old_planeX;
-
-	old_dirX = g->dir.x;
-	g->dir.x = g->dir.x * cos(0.05) - g->dir.y * sin(0.05);
-	g->dir.y = old_dirX * sin(0.05) + g->dir.y * cos(0.05);
-	old_planeX = g->plane.x;
-	g->plane.x = g->plane.x * cos(0.05) - g->plane.y * sin(0.05);
-	g->plane.y = old_planeX * sin(0.05) + g->plane.y * cos(0.05);
-}
-
-void	turn_right(t_game *g)
-{
-	double old_dirX;
-	double old_planeX;
-
-	old_dirX = g->dir.x;
-	g->dir.x = g->dir.x * cos(-0.05) - g->dir.y * sin(-0.05);
-	g->dir.y = old_dirX * sin(-0.05) + g->dir.y * cos(-0.05);
-	old_planeX = g->plane.x;
-	g->plane.x = g->plane.x * cos(-0.05) - g->plane.y * sin(-0.05);
-	g->plane.y = old_planeX * sin(-0.05) + g->plane.y * cos(-0.05);
 }
 
 static int	key_event(int input, t_game *g)
