@@ -22,8 +22,4 @@ make n
 		+ 방향에 따라 pos 세팅시 plane(화면의 방향 벡터) 또한 각각 다르게 설정해줘야함
 
 + 가끔 벽 통과가 될 때가 있고 안될 때가 있는데 왜 그러는지 모르겠음
-
-+ 함수 분할 중입니다.
-	+ move.c(w, a, s, d moving), turn.c(left and right arrow turning), raycasting.c, 2.c(raycasting)
-		+ 42 header 수정
 -------------------
