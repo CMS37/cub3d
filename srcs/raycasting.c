@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 15:48:01 by min-cho           #+#    #+#             */
-/*   Updated: 2023/04/01 16:18:26 by min-cho          ###   ########.fr       */
+/*   Updated: 2023/04/02 17:29:08 by min-cho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,16 @@ t_vec_int draw_start_end, int side, int x_cnt)
 		if (side == 0)
 		{
 			if (g->ray.x > 0)
-				color = ((int *)(g->tex.we.addr))[IMG_HEIGHT * texture.y + texture.x];
+				color = ((int *)(g->tex.ea.addr))[IMG_HEIGHT * texture.y + (IMG_WIDTH -  texture.x)];
 			else
-				color = ((int *)(g->tex.ea.addr))[IMG_HEIGHT * texture.y + texture.x];
+				color = ((int *)(g->tex.we.addr))[IMG_HEIGHT * texture.y + (IMG_WIDTH -  texture.x)];
 		}
 		else
 		{
 			if (g->ray.y > 0)
-				color = ((int *)(g->tex.so.addr))[IMG_HEIGHT * texture.y + texture.x];
+				color = ((int *)(g->tex.so.addr))[IMG_HEIGHT * texture.y + (IMG_WIDTH -  texture.x)];
 			else
-				color = ((int *)(g->tex.no.addr))[IMG_HEIGHT * texture.y + texture.x];
+				color = ((int *)(g->tex.no.addr))[IMG_HEIGHT * texture.y + (IMG_WIDTH -  texture.x)];
 		}
 		g->buf[y_cnt][x_cnt] = color;
 		y_cnt++;

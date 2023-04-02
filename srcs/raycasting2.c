@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 15:48:04 by min-cho           #+#    #+#             */
-/*   Updated: 2023/04/01 16:18:06 by min-cho          ###   ########.fr       */
+/*   Updated: 2023/04/02 17:06:32 by min-cho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	floor_ceil_to_buf(t_game *g)
 		x = 0;
 		while (x < WIDTH)
 		{
-			g->buf[y][x] = g->f_color;
-			g->buf[HEIGHT - y - 1][x] = g->c_color;
+			g->buf[y][x] = g->c_color;
+			g->buf[HEIGHT - y - 1][x] = g->f_color;
 			x++;
 		}
 		y++;
