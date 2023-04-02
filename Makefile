@@ -36,7 +36,11 @@ SRCS =	gnl/ft_split.c \
 		srcs/set.c \
 		srcs/set2.c \
 		srcs/start.c \
-		srcs/test.c
+		srcs/test.c \
+		srcs/move.c \
+		srcs/turn.c \
+		srcs/raycasting.c \
+		srcs/raycasting2.c
 
 
 OBJS := ${SRCS:%.c=${OBJS_DIR}/%.o}

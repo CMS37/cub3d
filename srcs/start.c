@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 02:13:36 by min-cho           #+#    #+#             */
-/*   Updated: 2023/04/02 16:13:34 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/04/02 16:25:41 by min-cho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,51 +25,17 @@ static int	key_event(int input, t_game *g)
 	if (input == KEY_ESC)
 		end_game(g);
 	if (input == KEY_W)
-	{
-		if (g->map[(int)g->pos.y][(int)(g->pos.x + g->dir.x * 0.05)] == '0')
-			g->pos.x += g->dir.x * 0.05;
-		if (g->map[(int)(g->pos.y + g->dir.y * 0.05)][(int)(g->pos.x)] == '0')
-			g->pos.y += g->dir.y * 0.05;
-	}
+		move_front(g);
 	if (input == KEY_S)
-	{
-		if (g->map[(int)(g->pos.y)][(int)(g->pos.x - g->dir.x * 0.05)] == '0')
-			g->pos.x -= g->dir.x * 0.05;
-		if (g->map[(int)(g->pos.y - g->dir.y * 0.05)][(int)(g->pos.x)] == '0')
-			g->pos.y -= g->dir.y * 0.05;
-	}
+		move_back(g);
 	if (input == KEY_D)
-	{
-		if (g->map[(int)(g->pos.y - g->dir.x * 0.05)][(int)(g->pos.x)] == '0')
-			g->pos.y -= g->dir.x * 0.05;
-		if (g->map[(int)(g->pos.y)][(int)(g->pos.x - g->dir.x * 0.05)] == '0')
-			g->pos.x += g->dir.y * 0.05;
-	}
+		move_right(g);
 	if (input == KEY_A)
-	{
-		if (g->map[(int)(g->pos.y + g->dir.x * 0.05)][(int)(g->pos.x)] == '0')
-			g->pos.y += g->dir.x * 0.05;
-		if (g->map[(int)(g->pos.y)][(int)(g->pos.x - g->dir.x * 0.05)] == '0')
-			g->pos.x -= g->dir.y * 0.05;
-	}
+		move_left(g);
 	if (input == KEY_ARROW_LEFT)
-	{
-		double oldDirX = g->dir.x;
-		g->dir.x = g->dir.x * cos(0.05) - g->dir.y * sin(0.05);
-		g->dir.y = oldDirX * sin(0.05) + g->dir.y * cos(0.05);
-		double oldPlaneX = g->plane.x;
-		g->plane.x = g->plane.x * cos(0.05) - g->plane.y * sin(0.05);
-		g->plane.y = oldPlaneX * sin(0.05) + g->plane.y * cos(0.05);
-	}
+		turn_left(g);
 	if (input == KEY_ARROW_RIGHT)
-	{
-		double oldDirX = g->dir.x;
-		g->dir.x = g->dir.x * cos(-0.05) - g->dir.y * sin(-0.05);
-		g->dir.y = oldDirX * sin(-0.05) + g->dir.y * cos(-0.05);
-		double oldPlaneX = g->plane.x;
-		g->plane.x = g->plane.x * cos(-0.05) - g->plane.y * sin(-0.05);
-		g->plane.y = oldPlaneX * sin(-0.05) + g->plane.y * cos(-0.05);
-	}
+		turn_right(g);
 	return (0);
 }
 
