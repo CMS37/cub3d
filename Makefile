@@ -6,7 +6,7 @@
 #    By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/11 18:53:50 by min-cho           #+#    #+#              #
-#    Updated: 2023/04/02 15:46:04 by min-cho          ###   ########seoul.kr   #
+#    Updated: 2023/04/02 16:25:56 by min-cho          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,11 @@ SRCS =	gnl/ft_split.c \
 		srcs/set.c \
 		srcs/set2.c \
 		srcs/start.c \
-		srcs/test.c
+		srcs/test.c \
+		srcs/move.c \
+		srcs/turn.c \
+		srcs/raycasting.c \
+		srcs/raycasting2.c
 
 
 OBJS := ${SRCS:%.c=${OBJS_DIR}/%.o}
