@@ -6,13 +6,13 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 15:42:44 by min-cho           #+#    #+#             */
-/*   Updated: 2023/04/01 16:13:10 by min-cho          ###   ########.fr       */
+/*   Updated: 2023/04/02 17:24:54 by min-cho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-void	turn_left(t_game *g)
+void	turn_right(t_game *g)
 {
 	double	old_dir_x;
 	double	old_plane_x;
@@ -25,7 +25,7 @@ void	turn_left(t_game *g)
 	g->plane.y = old_plane_x * sin(0.05) + g->plane.y * cos(0.05);
 }
 
-void	turn_right(t_game *g)
+void	turn_left(t_game *g)
 {
 	double	old_dir_x;
 	double	old_plane_x;
