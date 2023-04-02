@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 18:50:34 by marvin            #+#    #+#             */
-/*   Updated: 2023/03/30 01:36:44 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/04/02 15:48:12 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 void	get_info(t_info *info, char **argv)
 {
 	int		fd;
-	char	*tmp;
-	char	*tmp2;
 	char	*line;
+	char	*tmp;
 
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
@@ -30,10 +29,7 @@ void	get_info(t_info *info, char **argv)
 			break ;
 		if (ft_strcmp(tmp, "\n"))
 			info->size++;
-		tmp2 = ft_strdup(line);
-		free(line);
-		line = ft_strjoin(tmp2, tmp);
-		free(tmp2);
+		line = ft_strjoin(line, tmp);
 		free(tmp);
 	}
 	info->map = ft_split(line, '\n');

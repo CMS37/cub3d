@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhong <rhong@student.42.fr>                +#+  +:+       +#+        */
+/*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 09:01:07 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/30 17:50:27 by rhong            ###   ########.fr       */
+/*   Updated: 2023/04/02 15:32:53 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ static char	*check_xpm_file(char *tmp)
 
 	fd = open(tmp, O_RDONLY);
 	if (fd < 0)
-	{
-		close(fd);
 		print_err("Fail Open Xpm Files");
-	}
 	close(fd);
 	return (ft_strdup(tmp));
 }

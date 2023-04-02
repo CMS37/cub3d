@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 01:06:31 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/30 11:58:15 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/04/02 15:56:56 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	free_info(t_info *info)
 		free(info->img.no);
 	if (info->img.ea)
 		free(info->img.ea);
-	if (info->img.so)
+	if (info->img.we)
 		free(info->img.we);
 	if (info->img.so)
 		free(info->img.so);

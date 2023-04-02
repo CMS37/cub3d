@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 01:09:04 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/29 21:00:00 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/04/02 16:04:11 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 static int	check_type(char *str, char *type)
 {
-	int		len;
 	char	*tmp;
 
-	len = ft_strlen(str);
-	tmp = ft_substr(str, len - 4, len);
+	tmp = ft_substr(str, ft_strlen(str) - 4, ft_strlen(str));
 	if (!str)
 		print_err("Check Map FILE");
 	if (ft_strcmp(tmp, type))
