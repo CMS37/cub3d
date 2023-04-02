@@ -60,7 +60,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (str);
 }
 
-char	*ft_strchr(char *str)
+char	*ft_strchr(char *str, char c)
 {
 	int	i;
 
@@ -71,7 +71,7 @@ char	*ft_strchr(char *str)
 		return (0);
 	while (str[i])
 	{
-		if (str[i] == '\n')
+		if (str[i] == c)
 			return ((char *)(str + i));
 		i++;
 	}

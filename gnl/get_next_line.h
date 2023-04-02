@@ -32,7 +32,7 @@ char	*get_next_line(int fd);
 char	*ft_find_line(int fd, t_list *line);
 char	*ft_make_line(char *backup);
 char	*ft_left_line(char *backup);
-char	*ft_strchr(char	*str);
+char	*ft_strchr(char	*str, char c);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strdup(char *str);
 char	*ft_substr(char *s, unsigned int start, size_t len);

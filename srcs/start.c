@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 02:13:36 by min-cho           #+#    #+#             */
-/*   Updated: 2023/04/02 16:25:41 by min-cho          ###   ########.fr       */
+/*   Updated: 2023/04/02 20:01:28 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ char	**copy_map(char **map, int size)
 			free_map(tmp);
 			return (NULL);
 		}
+		if (ft_strchr(tmp[i], '\t'))
+			print_err("Invalid tab character in map");
 		i++;
 	}
 	tmp[i] = NULL;

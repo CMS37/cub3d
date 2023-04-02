@@ -65,7 +65,7 @@ char	*ft_find_line(int fd, t_list *line)
 	buf = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buf)
 		return (NULL);
-	while (!ft_strchr(line->line) && line->size != 0)
+	while (!ft_strchr(line->line, '\n') && line->size != 0)
 	{
 		line->size = read(fd, buf, BUFFER_SIZE);
 		if (line->size == -1)
