@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 09:01:07 by min-cho           #+#    #+#             */
-/*   Updated: 2023/04/02 16:26:51 by min-cho          ###   ########.fr       */
+/*   Updated: 2023/04/02 19:28:38 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,7 @@ static void	set_pos(t_game *g)
 			{
 				if (g->pos.x || g->pos.y)
 					print_err("So many NSEW");
-				g->pos.x = x + 0.5;
-				g->pos.y = y + 0.5;
+				g->pos = (t_vec){x + 0.5, y + 0.5};
 			}
 			x++;
 		}

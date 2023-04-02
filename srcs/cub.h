@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 16:29:12 by min-cho           #+#    #+#             */
-/*   Updated: 2023/04/02 16:29:17 by min-cho          ###   ########.fr       */
+/*   Updated: 2023/04/02 19:42:52 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,7 @@ int		test(t_game *g);
 int		is_player(char c);
 int		is_closed(t_game *g, int x, int y);
 int		map_identi(char c);
+int		check_map(char **map, int x, int y);
 
 //move.c
 void	move_front(t_game *g);

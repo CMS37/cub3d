@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:37:51 by min-cho           #+#    #+#             */
-/*   Updated: 2023/04/02 15:53:37 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/04/02 19:28:51 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	is_closed(t_game *g, int x, int y)
 
 int	map_identi(char c)
 {
-	const char	s[8] = "10NESW ";
+	const char	s[8] = "10NESW \t";
 	int			i;
 
 	i = 0;
