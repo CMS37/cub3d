@@ -1,19 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/14 01:06:58 by min-cho           #+#    #+#             */
-/*   Updated: 2023/04/02 15:38:41 by min-cho          ###   ########seoul.kr  */
+/*   Created: 2023/04/02 15:44:51 by min-cho           #+#    #+#             */
+/*   Updated: 2023/04/02 15:45:07 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "../srcs/cub.h"
 
-void	print_err(char *s1)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	printf("Error! %s\n", s1);
-	exit (1);
+	unsigned char	*s11;
+	unsigned char	*s22;
+	size_t			i;
+
+	s11 = (unsigned char *)s1;
+	s22 = (unsigned char *)s2;
+	i = 0;
+	while (s11[i] && i < n)
+	{
+		if (s11[i] != s22[i])
+			return (s11[i] - s22[i]);
+		i++;
+	}
+	if (s22[i] == '\0' || i == n)
+		return (0);
+	else
+		return (-s22[i]);
 }

@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 01:19:16 by min-cho           #+#    #+#             */
-/*   Updated: 2023/03/29 21:20:54 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/04/02 15:49:25 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ static int	str_isdigit(char *str)
 	}
 	while (white_space(str[i]))
 		i++;
-	if (str[i] != '\0')
-		return (1);
-	return (0);
+	return (str[i] != '\0');
 }
 
 static int	split_len(char **str)
@@ -44,9 +42,9 @@ static int	split_len(char **str)
 
 static void	rgb_to_hex(int *hex, char **str)
 {
-	int		red;
-	int		green;
-	int		blue;
+	int	red;
+	int	green;
+	int	blue;
 
 	if ((*hex))
 		print_err("Floor - Check Map identifier");
@@ -65,22 +63,22 @@ static void	rgb_to_hex(int *hex, char **str)
 
 int	set_info(char *tmp, t_info *info)
 {
-	if (tmp[0] == 'N' && tmp[1] == 'O')
+	if (!ft_strncmp(tmp, "NO", 2))
 		set_img(&(info->img.no), tmp + 3);
-	else if (tmp[0] == 'S' && tmp[1] == 'O')
+	else if (!ft_strncmp(tmp, "SO", 2))
 		set_img(&(info->img.so), tmp + 3);
-	else if (tmp[0] == 'W' && tmp[1] == 'E')
+	else if (!ft_strncmp(tmp, "WE", 2))
 		set_img(&(info->img.we), tmp + 3);
-	else if (tmp[0] == 'E' && tmp[1] == 'A')
+	else if (!ft_strncmp(tmp, "EA", 2))
 		set_img(&(info->img.ea), tmp + 3);
-	else if (tmp[0] == 'F')
+	else if (*tmp == 'F')
 	{
 		if (tmp[1] != ' ' || info->f_flag != 0)
 			print_err("Floor - Check Map identifier");
 		rgb_to_hex(&(info->f_color), ft_split(tmp + 2, ','));
 		info->f_flag += 1;
 	}
-	else if (tmp[0] == 'C')
+	else if (*tmp == 'C')
 	{
 		if (tmp[1] != ' ' || info->c_flag != 0)
 			print_err("Ceiling - Check Map identifier");
