@@ -38,28 +38,30 @@ static int	get_texture_x(t_game *g, double wall_x, int side)
 
 static void	texture_to_buf(t_game *g, t_ray r, int x, int y)
 {
-	int ea_color;
-	int we_color;
-	int so_color;
-	int no_color;
+	int *e_c_p;
+	int *w_c_p;
+	int *s_c_p;
+	int *n_c_p;
+	int	location;
 
-	ea_color = ((int *)(g->tex.ea.addr))[IMG_HEIGHT * r.texture.y + (IMG_WIDTH - r.texture.x)];
-	we_color = ((int *)(g->tex.we.addr))[IMG_HEIGHT * r.texture.y + (IMG_WIDTH - r.texture.x)];
-	so_color = ((int *)(g->tex.so.addr))[IMG_HEIGHT * r.texture.y + (IMG_WIDTH - r.texture.x)];
-	no_color = ((int *)(g->tex.no.addr))[IMG_HEIGHT * r.texture.y + (IMG_WIDTH - r.texture.x)];
+	e_c_p = ((int *)(g->tex.ea.addr));
+	w_c_p = ((int *)(g->tex.we.addr));
+	s_c_p = ((int *)(g->tex.so.addr));
+	n_c_p = ((int *)(g->tex.no.addr));
+	location = IMG_HEIGHT * r.texture.y + (IMG_WIDTH - r.texture.x);
 	if (r.side == 0)
 	{
 		if (g->ray.x > 0)
-			g->buf[y][x] = ea_color;
+			g->buf[y][x] = e_c_p[location];
 		else
-			g->buf[y][x] = we_color;
+			g->buf[y][x] = w_c_p[location];
 	}
 	else
 	{
 		if (g->ray.y > 0)
-			g->buf[y][x] = so_color;
+			g->buf[y][x] = s_c_p[location];
 		else
-			g->buf[y][x] = no_color;
+			g->buf[y][x] = n_c_p[location];
 	}
 }
 
