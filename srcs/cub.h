@@ -101,6 +101,15 @@ typedef struct s_game
 	t_imgptr		window_img;
 }	t_game;
 
+typedef struct s_raycast_info
+{
+	t_vec_int	step;
+	t_vec_int	map;
+	double		perp_wall_dist;
+	int			side;
+	t_vec_int	texture;
+}	t_ray;
+
 //use libft
 int		white_space(char c);
 int		ft_atoi(const char *nptr);
@@ -160,7 +169,7 @@ void	raycasting(t_game *g);
 
 //raycasting2.c
 void	floor_ceil_to_buf(t_game *g);
-int		get_side(t_game *g, t_vec_int *step, t_vec_int *map, int x_cnt);
-double	get_perp_wall_dist(t_game *g, t_vec_int map, t_vec_int step, int side);
+int		get_side(t_game *g, t_ray *r, int x_cnt);
+double	get_perp_wall_dist(t_game *g, t_ray r);
 
 #endif
