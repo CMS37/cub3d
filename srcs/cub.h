@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 16:29:12 by min-cho           #+#    #+#             */
-/*   Updated: 2023/04/02 19:42:52 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/04/04 15:15:14 by min-cho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,5 +171,9 @@ void	raycasting(t_game *g);
 void	floor_ceil_to_buf(t_game *g);
 int		get_side(t_game *g, t_ray *r, int x_cnt);
 double	get_perp_wall_dist(t_game *g, t_ray r);
+
+//raycasting3.c
+void	set_step_side_dist(t_game *g, t_ray *r, t_vec *delta_dist, \
+t_vec *side_dist);
 
 #endif

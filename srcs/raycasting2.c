@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 15:48:04 by min-cho           #+#    #+#             */
-/*   Updated: 2023/04/02 17:06:32 by min-cho          ###   ########.fr       */
+/*   Updated: 2023/04/04 15:16:44 by min-cho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,26 +75,7 @@ int	get_side(t_game *g, t_ray *r, int x_cnt)
 	g->ray.x = g->dir.x + g->plane.x * (2 * x_cnt / (double)WIDTH - 1);
 	g->ray.y = g->dir.y + g->plane.y * (2 * x_cnt / (double)WIDTH - 1);
 	init_get_side(g, &(r->map), &delta_dist);
-	if (g->ray.x < 0)
-	{
-		r->step.x = -1;
-		side_dist.x = (g->pos.x - r->map.x) * delta_dist.x;
-	}
-	else
-	{
-		r->step.x = 1;
-		side_dist.x = (r->map.x + 1.0 - g->pos.x) * delta_dist.x;
-	}
-	if (g->ray.y < 0)
-	{
-		r->step.y = -1;
-		side_dist.y = (g->pos.y - r->map.y) * delta_dist.y;
-	}
-	else
-	{
-		r->step.y = 1;
-		side_dist.y = (r->map.y + 1.0 - g->pos.y) * delta_dist.y;
-	}
+	set_step_side_dist(g, r, &delta_dist, &side_dist);
 	return (get_hit(g, r, side_dist, delta_dist));
 }
 
@@ -102,7 +83,7 @@ double	get_perp_wall_dist(t_game *g, t_ray r)
 {
 	double	ret;
 
-	if (side == 0)
+	if (r.side == 0)
 		ret = (r.map.x - g->pos.x + (1 - r.step.x) / 2) / g->ray.x;
 	else
 		ret = (r.map.y - g->pos.y + (1 - r.step.y) / 2) / g->ray.y;
