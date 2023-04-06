@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 02:13:36 by min-cho           #+#    #+#             */
-/*   Updated: 2023/04/02 20:01:28 by min-cho          ###   ########seoul.kr  */
+/*   Updated: 2023/04/06 14:44:40 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,13 @@ char	**copy_map(char **map, int size)
 	return (tmp);
 }
 
+static int	start(t_game *g)
+{
+	raycasting(g);
+	draw_window(g);
+	return (0);
+}
+
 void	start_game(t_info *info)
 {
 	t_game	g;
@@ -76,7 +83,7 @@ void	start_game(t_info *info)
 	g.window_img.img = mlx_new_image(g.mlx, WIDTH, WIDTH);
 	g.window_img.addr = (unsigned int *)mlx_get_data_addr(g.window_img.img, \
 					&g.window_img.bpp, &g.window_img.len, &g.window_img.end);
-	mlx_loop_hook(g.mlx, &test, &g);
+	mlx_loop_hook(g.mlx, &start, &g);
 	mlx_hook(g.win, 17, 0, end_game, &g);
 	mlx_hook(g.win, 2, 0, key_event, &g);
 	mlx_loop(g.mlx);

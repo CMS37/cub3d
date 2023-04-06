@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 16:29:12 by min-cho           #+#    #+#             */
-/*   Updated: 2023/04/04 15:15:14 by min-cho          ###   ########.fr       */
+/*   Updated: 2023/04/06 14:45:23 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,9 +144,7 @@ void	set_game(t_game *g, t_info *info);
 
 //set2.c
 void	set_dir_plane(t_game *g);
-
-//test.c
-int		test(t_game *g);
+void	draw_window(t_game *g);
 
 //is.c
 int		is_player(char c);
