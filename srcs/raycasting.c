@@ -6,7 +6,7 @@
 /*   By: min-cho <min-cho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 15:48:01 by min-cho           #+#    #+#             */
-/*   Updated: 2023/04/04 15:10:18 by min-cho          ###   ########.fr       */
+/*   Updated: 2023/04/06 17:50:33 by min-cho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,39 +29,41 @@ static int	get_texture_x(t_game *g, double wall_x, int side)
 	int	ret;
 
 	ret = (int)(wall_x * (double)IMG_WIDTH);
-	if (side == 0 && g->ray.x > 0)
-		ret = IMG_WIDTH - ret - 1;
-	if (side == 1 && g->ray.y < 0)
-		ret = IMG_WIDTH - ret - 1;
+	if (side == 0)
+	{
+		if (g->ray.x > 0)
+			ret = IMG_WIDTH - ret;
+		else if (g->ray.x < 0)
+			ret = ret + 1;
+	}
+	else if (side == 1)
+	{
+		if (g->ray.y < 0)
+			ret = IMG_WIDTH - ret;
+		else if (g->ray.y > 0)
+			ret = ret + 1;
+	}
 	return (ret);
 }
 
 static void	texture_to_buf(t_game *g, t_ray r, int x, int y)
 {
-	int	*e_c_p;
-	int	*w_c_p;
-	int	*s_c_p;
-	int	*n_c_p;
 	int	location;
 
-	e_c_p = ((int *)(g->tex.ea.addr));
-	w_c_p = ((int *)(g->tex.we.addr));
-	s_c_p = ((int *)(g->tex.so.addr));
-	n_c_p = ((int *)(g->tex.no.addr));
 	location = IMG_HEIGHT * r.texture.y + (IMG_WIDTH - r.texture.x);
 	if (r.side == 0)
 	{
 		if (g->ray.x > 0)
-			g->buf[y][x] = e_c_p[location];
+			g->buf[y][x] = ((int *)(g->tex.ea.addr))[location];
 		else
-			g->buf[y][x] = w_c_p[location];
+			g->buf[y][x] = ((int *)(g->tex.we.addr))[location];
 	}
 	else
 	{
 		if (g->ray.y > 0)
-			g->buf[y][x] = s_c_p[location];
+			g->buf[y][x] = ((int *)(g->tex.so.addr))[location];
 		else
-			g->buf[y][x] = n_c_p[location];
+			g->buf[y][x] = ((int *)(g->tex.no.addr))[location];
 	}
 }
 
